@@ -27,9 +27,9 @@
             .card-wrapper {
                 position: relative;
                 overflow: hidden;
-                flex: 1;
-                min-width: 480px;
-                max-width: 350px;
+                // flex: 1;
+                // min-width: 480px;
+                // max-width: 350px;
 
                 .abstract-design {
                     position: absolute;
@@ -42,7 +42,6 @@
                     border: 1px solid transparent;
                     border-radius: 20px;
                     padding: 40px;
-                    height: 100%;
                     backdrop-filter: blur(10px);
                     transition: all 0.3s ease;
                     position: relative;
