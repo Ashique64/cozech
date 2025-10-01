@@ -19,10 +19,14 @@ html {
     --ternary-color: #666666;
     --para-color: #808080;
     --button-color-2: #1A1A1A;
-    --primary-color-2: #121212;
+    --card-bg: #1a1a1a;
+
+
+    
+    /* --primary-color-2: #121212;
     --secondary-color-2: #F5F5F5;
     --primary-color-3: #1A1A1A;
-    --secondary-color-3: #FAFAFA;
+    --secondary-color-3: #FAFAFA; */
 }
 
 body {
