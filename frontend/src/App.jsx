@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import "./App.css";
 
 const Hero = React.lazy(() => import("./components/Hero/Hero"));
+const Process = React.lazy(() => import("./components/Process/Process"));
 
 function Loader() {
     return (
@@ -18,6 +19,7 @@ function App() {
     return (
         <Suspense fallback={<Loader />}>
             <Hero />
+            <Process />
         </Suspense>
     );
 }

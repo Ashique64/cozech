@@ -54,7 +54,6 @@
             }
         }
 
-
         .abstract-design {
             position: absolute;
             top: -50px;
@@ -83,5 +82,20 @@
             max-width: 500px;
             object-fit: contain;
         }
+    }
+
+     &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 150px;
+        background: linear-gradient(180deg, 
+            transparent 0%, 
+            rgba(15, 15, 15, 0.588) 100%
+        );
+        pointer-events: none;
+        z-index: 0;
     }
 }
