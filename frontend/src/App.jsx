@@ -6,6 +6,7 @@ const Process = React.lazy(() => import("./components/Process/Process"));
 const Services = React.lazy(() => import("./components/Services/Services"));
 const About = React.lazy(() => import("./components/About/About"));
 const CTA = React.lazy(() => import("./components/CTA/CTA"));
+const Footer = React.lazy(() => import("./components/Footer/Footer"));
 
 function Loader() {
     return (
@@ -26,6 +27,7 @@ function App() {
             <Services />
             <About />
             <CTA />
+            <Footer />
         </Suspense>
     );
 }
