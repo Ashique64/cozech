@@ -1,0 +1,76 @@
+#services {
+    .service-container {
+        .title-section {
+            padding: 0 150px;
+            .title {
+                font-size: 38px;
+                font-weight: 600;
+                line-height: 150%;
+                letter-spacing: 0;
+                color: var(--secondary-color);
+                span {
+                    color: var(--ternary-color);
+                }
+            }
+
+            .description {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 150%;
+                letter-spacing: 0;
+                color: var(--para-color);
+            }
+        }
+
+        .card-section {
+            .card-wrapper {
+                .card {
+                    overflow: hidden;
+                    .items-wrapper {
+                        .item-1 {
+                            position: relative;
+                            border: 6px solid var(--ternary-color);
+                            border-radius: 75px;
+                            width: 66px;
+                            height: 66px;
+                            background-color: var(--button-color-2);
+                            box-shadow: inset 10px 10px 9px 2px rgba(255, 255, 255, 0.09);
+                            overflow: hidden;
+                            img {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                z-index: 1;
+                            }
+
+                            .icon {
+                                width: 34px;
+                                height: 34px;
+                            }
+                        }
+                        .item-2 {
+                            overflow: hidden;
+                            .card-title {
+                                font-size: 20px;
+                                font-weight: 600;
+                                line-height: 150%;
+                                text-transform: capitalize;
+                                letter-spacing: 0;
+                            }
+                            .card-description {
+                                font-size: 16px;
+                                font-weight: 400;
+                                line-height: 150%;
+                                letter-spacing: 0;
+                                color: var(--para-color);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

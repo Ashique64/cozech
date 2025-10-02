@@ -6,28 +6,28 @@ const processData = [
         id: 1,
         title: "PLAN",
         description: "We define goals, scope, and strategy upfront.",
-        icon: "/images/card-1.png",
+        icon: "/images/process/card-1.png",
         hasAbstractDesign: true,
     },
     {
         id: 2,
         title: "BUILD",
         description: "Design and development happen in tracked, manageable stages.",
-        icon: "/images/card-2.png",
+        icon: "/images/process/card-2.png",
         hasAbstractDesign: true,
     },
     {
         id: 3,
         title: "DELIVER",
         description: "Launch with confidence — polished, tested, and ready to go.",
-        icon: "/images/card-3.png",
+        icon: "/images/process/card-3.png",
         hasAbstractDesign: true,
     },
     {
         id: 4,
         title: "SUPPORT",
         description: "Ongoing maintenance and updates even after launch, so your digital solution keeps performing.",
-        icon: "/images/card-4.png",
+        icon: "/images/process/card-4.png",
         hasAbstractDesign: true,
     },
 ];
@@ -51,7 +51,7 @@ const Process = () => {
                         <div key={item.id} className="card-wrapper w-full md:w-[calc(50%-12px)] px-4 mb-8">
                             {item.hasAbstractDesign && (
                                 <div className="abstract-design">
-                                    <img src="/images/card-layer.png" alt="" />
+                                    <img src="/images/process/card-layer.png" alt="" />
                                 </div>
                             )}
                             <div className="card flex flex-col justify-center gap-4 h-full">

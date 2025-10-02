@@ -3,6 +3,7 @@ import "./App.css";
 
 const Hero = React.lazy(() => import("./components/Hero/Hero"));
 const Process = React.lazy(() => import("./components/Process/Process"));
+const Services = React.lazy(() => import("./components/Services/Services"));
 
 function Loader() {
     return (
@@ -20,6 +21,7 @@ function App() {
         <Suspense fallback={<Loader />}>
             <Hero />
             <Process />
+            <Services />
         </Suspense>
     );
 }

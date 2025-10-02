@@ -4,6 +4,7 @@
         position: relative;
 
         .title-section {
+            padding: 0 150px;
             h2 {
                 font-size: 38px;
                 font-weight: 600;
@@ -27,9 +28,6 @@
             .card-wrapper {
                 position: relative;
                 overflow: hidden;
-                // flex: 1;
-                // min-width: 480px;
-                // max-width: 350px;
 
                 .abstract-design {
                     position: absolute;
@@ -69,7 +67,7 @@
                         content: "";
                         position: absolute;
                         inset: 0;
-                        background: url("../../../public/images/card-bg.png");
+                        background: url("/images/process/card-bg.png");
                         background-position: center;
                         background-repeat: no-repeat;
                         background-size: cover;
@@ -107,8 +105,8 @@
 
         .button-section {
             button {
-                display: inline-flex; 
-                align-items: center; 
+                display: inline-flex;
+                align-items: center;
                 gap: 8px;
                 padding: 16px 24px;
                 border: 1px solid #262626;
