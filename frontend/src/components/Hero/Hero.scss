@@ -50,6 +50,7 @@
                 .cta-button-2 {
                     background-color: var(--button-color-2);
                     color: var(--secondary-color);
+                    border: 1px solid #262626;
                 }
             }
         }
@@ -84,17 +85,14 @@
         }
     }
 
-     &::after {
-        content: '';
+    &::after {
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
         height: 150px;
-        background: linear-gradient(180deg, 
-            transparent 0%, 
-            rgba(15, 15, 15, 0.664) 100%
-        );
+        background: linear-gradient(180deg, transparent 0%, rgba(15, 15, 15, 0.664) 100%);
         pointer-events: none;
         z-index: 0;
     }
