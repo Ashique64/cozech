@@ -4,7 +4,7 @@
         position: relative;
 
         .title-section {
-            padding: 0 150px;
+            padding: 0 clamp(1rem, 10vw, 150px);
             h2 {
                 font-size: 38px;
                 font-weight: 600;

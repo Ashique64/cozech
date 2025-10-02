@@ -1,7 +1,7 @@
 #services {
     .service-container {
         .title-section {
-            padding: 0 150px;
+            padding: 0 clamp(1rem, 10vw, 150px);
             .title {
                 font-size: 38px;
                 font-weight: 600;

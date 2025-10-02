@@ -18,8 +18,8 @@ const Hero = () => {
                 <div className="cta-section flex flex-col gap-4">
                     <h6 className="cta-title">Let’s simplify how you go digital</h6>
                     <div className="cta-buttons flex gap-2">
-                        <button className="cta-button cta-button-1" type="button">Start a project</button>
-                        <button className="cta-button cta-button-2" type="button">Book a call</button>
+                        <button type="button" className="cta-button cta-button-1" >Start a project</button>
+                        <button type="button" className="cta-button cta-button-2" >Book a call</button>
                     </div>
                 </div>
 
