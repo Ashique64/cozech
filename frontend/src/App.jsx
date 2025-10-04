@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
+import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
 
-const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
 const Hero = React.lazy(() => import("./components/Hero/Hero"));
 const Process = React.lazy(() => import("./components/Process/Process"));
 const Services = React.lazy(() => import("./components/Services/Services"));

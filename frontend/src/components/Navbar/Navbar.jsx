@@ -3,7 +3,7 @@ import "./Navbar.scss";
 
 const Navbar = () => {
     return (
-        <div id="navbar" className="navbar w-full">
+        <nav id="navbar" className="navbar w-full">
             <div className="navbar-container w-full flex justify-between items-center md:px-20 md:py-5">
                 <div className="logo">
                     <img src="/images/socialMedia/svg/Logo.svg" alt="Logo" />
@@ -16,7 +16,7 @@ const Navbar = () => {
                     <a href="#contact">Contact Us</a>
                 </div>
             </div>
-        </div>
+        </nav>
     );
 };
 
