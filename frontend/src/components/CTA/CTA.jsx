@@ -26,7 +26,7 @@ const CTA = () => {
                 </div>
                 <div className="image-section w-full">
                     <img src="/images/CTA/cta-image.png" alt="Decorative" className="cta-bottom-image" />
-                    <div className="bars w-full h-[180px] flex"></div>
+                    <div className="bars flex"></div>
                 </div>
             </div>
         </section>
