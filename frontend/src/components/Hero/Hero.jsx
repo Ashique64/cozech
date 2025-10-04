@@ -4,7 +4,7 @@ import "./Hero.scss";
 const Hero = () => {
     return (
         <section id="home" className="home w-full h-screen flex items-center justify-center">
-            <div className="content-container md:w-1/2 h-screen flex flex-col justify-center md:ps-20 md:pe-10 gap-16 relative">
+            <div className="content-container md:w-1/2 h-screen flex flex-col justify-center md:ps-20 md:pe-10 md:pt-32 gap-16 relative">
                 <div className="text-section flex flex-col gap-4 text-start">
                     <h1 className="title">
                         Smart Digital Solutions <span>Built Around You</span>
