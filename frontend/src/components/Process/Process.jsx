@@ -48,7 +48,7 @@ const Process = () => {
 
                 <div className="card-section flex justify-center items-stretch gap-6 flex-wrap w-full">
                     {processData.map((item) => (
-                        <div key={item.id} className="card-wrapper w-full md:w-[calc(50%-12px)] px-4 mb-8">
+                        <div key={item.id} className="card-wrapper w-full md:w-[calc(50%-12px)] px-3 mb-8">
                             {item.hasAbstractDesign && (
                                 <div className="abstract-design">
                                     <img src="/images/process/card-layer.png" alt="" />

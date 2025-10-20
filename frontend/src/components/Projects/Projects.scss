@@ -27,20 +27,23 @@
             .card-wrapper {
                 border-radius: 20px;
                 border: 1px solid linear-gradient(90deg, #1F1F1F , #1F1F1F00);
-                padding: 40px;
+                padding: 24px;
                 background: linear-gradient(rgba(31, 31, 31, 1), rgba(31, 31, 31, 0));
 
                 .card {
                     .image {
                         width: 100%;
                         border-radius: 20px;
-                        border: 1px solid #5C5C5C;
+                        border: 1px solid #5c5c5cb0;
+                        overflow: hidden;
 
                         img {
                             width: 100%;
-                            border-radius: 20px;
+                            height: 220px;
+                            border-radius: 8px;
                             object-fit: cover;
                             filter: grayscale(100%);
+                            transition: all 0.3s ease;
                         }
                     }
 
@@ -71,6 +74,13 @@
                             font-size: clamp(14px, 1.2vw, 16px);
                             background: var(--secondary-color);
                             color: var(--primary-color);
+                        }
+                    }
+
+                    &:hover {
+                        img {
+                            filter: grayscale(0);
+                            transform: scale(1.1);
                         }
                     }
                 }

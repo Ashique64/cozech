@@ -33,6 +33,8 @@
 
                 .abstract-design {
                     position: absolute;
+                    top: 0;
+                    left: 0;
                     width: 100%;
                     height: 100%;
                     z-index: 2;
@@ -40,8 +42,8 @@
                 .card {
                     background: var(--card-bg);
                     border: 1px solid transparent;
-                    border-radius: 20px;
-                    padding: 40px;
+                    border-radius: 16px;
+                    padding: 20px;
                     backdrop-filter: blur(10px);
                     transition: all 0.3s ease;
                     position: relative;
@@ -58,11 +60,12 @@
                             rgba(255, 255, 255, 0.05) 50%,
                             rgba(255, 255, 255, 0) 100%
                         );
-                        border-radius: 20px;
+                        border-radius: 16px;
                         mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
                         mask-composite: xor;
                         -webkit-mask-composite: xor;
                         z-index: -1;
+                        overflow: hidden;
                     }
 
                     &::after {
@@ -75,14 +78,15 @@
                         background-size: cover;
                         opacity: 0.15;
                         z-index: -1;
-                        border-radius: 20px;
+                        border-radius: 16px;
+                        overflow: hidden;
                     }
 
                     .item-1 {
                         padding: 40px;
                         .logo {
-                            width: 150px;
-                            height: 150px;
+                            width: 100px;
+                            height: 100px;
                         }
                     }
                     .item-2 {
