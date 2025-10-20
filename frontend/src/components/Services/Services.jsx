@@ -67,7 +67,7 @@ const servicesData = [
 const Services = () => {
     return (
         <section id="services" className="services w-full min-h-screen flex flex-col items-center justify-center md:p-20">
-            <div className="service-container flex flex-col gap-20 justify-center items-center w-full">
+            <div className="service-container flex flex-col gap-20 justify-center items-center max-w-[1280px] w-full mx-auto px-4">
                 <div className="title-section flex flex-col md:gap-4 text-center">
                     <h2 className="title font-semibold">
                         Design. Develop. <span>Deliver.</span>

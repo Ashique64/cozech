@@ -36,10 +36,10 @@
             .cta-section {
                 button {
                     border-radius: 56px;
-                    padding: 14px 20px;
+                    padding: clamp(12px, 1.1vw, 16px) clamp(18px, 1.6vw, 24px);
                     background: var(--secondary-color);
                     color: var(--button-color-2);
-                    font-size: 14px;
+                    font-size: clamp(13px, 1.1vw, 16px);
                     font-weight: 400;
                 }
 

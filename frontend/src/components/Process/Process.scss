@@ -6,11 +6,13 @@
         .title-section {
             padding: 0 clamp(1rem, 10vw, 150px);
             h2 {
-                font-size: clamp(28px, 2.8vw, 48px);
+                font-size: clamp(28px, 3vw, 48px);
                 font-weight: 600;
                 line-height: 150%;
                 letter-spacing: 0;
                 color: var(--ternary-color);
+                text-transform: uppercase;
+
 
                 span {
                     color: var(--secondary-color);
