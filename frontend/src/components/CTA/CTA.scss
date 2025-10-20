@@ -28,18 +28,18 @@
             z-index: 5;
             .text-section {
                 .title {
-                    font-size: 38px;
+                    font-size: clamp(28px, 3vw, 48px);
                     font-weight: 600;
                     line-height: 150%;
                     letter-spacing: 0;
-                    color: var(--secondary-color);
+                    color: var(--ternary-color);
+                    text-transform: uppercase;
                 }
                 .description {
-                    font-size: 16px;
+                    color: var(--para-color);
+                    font-size: clamp(14px, 1.25vw, 18px);
                     font-weight: 400;
                     line-height: 150%;
-                    letter-spacing: 0;
-                    color: var(--para-color);
                 }
             }
 
