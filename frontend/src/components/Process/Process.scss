@@ -6,7 +6,7 @@
         .title-section {
             padding: 0 clamp(1rem, 10vw, 150px);
             h2 {
-                font-size: 38px;
+                font-size: clamp(28px, 2.8vw, 48px);
                 font-weight: 600;
                 line-height: 150%;
                 letter-spacing: 0;
@@ -18,7 +18,7 @@
             }
             p {
                 color: var(--para-color);
-                font-size: 16px;
+                font-size: clamp(14px, 1.25vw, 18px);
                 font-weight: 400;
                 line-height: 150%;
             }
@@ -85,7 +85,7 @@
                     }
                     .item-2 {
                         h3 {
-                            font-size: 20px;
+                            font-size: clamp(18px, 1.6vw, 24px);
                             font-weight: 600;
                             line-height: 150%;
                             letter-spacing: 0;
@@ -93,7 +93,7 @@
 
                         p {
                             font-weight: 400;
-                            font-size: 14px;
+                            font-size: clamp(13px, 1.2vw, 16px);
                             line-height: 150%;
                             letter-spacing: 0;
                             color: var(--para-color);
@@ -114,7 +114,7 @@
                 backdrop-filter: blur(12px);
                 -webkit-backdrop-filter: blur(12px);
                 text-transform: capitalize;
-                font-size: 14px;
+                font-size: clamp(13px, 1.1vw, 16px);
                 font-weight: 400;
                 line-height: 150%;
                 letter-spacing: 0;
