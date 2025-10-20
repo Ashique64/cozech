@@ -2,24 +2,24 @@
     .projects-container {
         .title-section {
             padding: 0 clamp(1rem, 10vw, 150px);
-            .title {
+            h2 {
                 font-size: clamp(28px, 3vw, 48px);
                 font-weight: 600;
                 line-height: 150%;
                 letter-spacing: 0;
-                color: var(--secondary-color);
+                color: var(--ternary-color);
                 text-transform: uppercase;
+
+
                 span {
-                    color: var(--ternary-color);
+                    color: var(--secondary-color);
                 }
             }
-
-            .description {
+            p {
+                color: var(--para-color);
                 font-size: clamp(14px, 1.25vw, 18px);
                 font-weight: 400;
                 line-height: 150%;
-                letter-spacing: 0;
-                color: var(--para-color);
             }
         }
 
