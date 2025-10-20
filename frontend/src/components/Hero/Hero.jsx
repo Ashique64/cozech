@@ -1,35 +1,32 @@
 import React from "react";
+import { HashLink as Link } from "react-router-hash-link";
 import "./Hero.scss";
 
 const Hero = () => {
     return (
-        <section id="home" className="home w-full h-screen flex items-center justify-center">
-            <div className="content-container md:w-1/2 h-screen flex flex-col justify-center md:ps-20 md:pe-10 md:pt-32 gap-16 relative">
-                <div className="text-section flex flex-col gap-4 text-start">
-                    <h1 className="title">
-                        Smart Digital Solutions <span>Built Around You</span>
-                    </h1>
-                    <p className="hero-para">
-                        At Cozech, we turn your ideas into scalable solutions, blending creativity, strategy, and
-                        convenience at every step.
-                    </p>
-                </div>
-
-                <div className="cta-section flex flex-col gap-4">
-                    <h6 className="cta-title">Let’s simplify how you go digital</h6>
-                    <div className="cta-buttons flex gap-2">
-                        <button type="button" className="cta-button cta-button-1" >Start a project</button>
-                        <button type="button" className="cta-button cta-button-2" >Book a call</button>
+        <section id="home" className="home relative w-full h-screen flex items-center justify-center overflow-hidden">
+            <video className="absolute top-0 left-0 w-full h-full object-cover" autoPlay loop muted playsInline>
+                <source src="/videos/Hero-bg.webm" type="video/webm" />
+                <source src="/videos/Hero-bg.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            <div className="absolute inset-0 bg-black/50" />
+            <div className="gradient-overlay absolute inset-0 pointer-events-none" />
+            <div className="container relative z-10 max-w-[1280px] w-full mx-auto px-4 h-full flex items-center justify-center">
+                <div className="section-wrapper  w-full h-full pt-36 px-10 flex flex-col items-center justify-center gap-14">
+                    <div className="title-section flex flex-col justify-center items-center gap-4 ">
+                        <h1 className="main-title">
+                            We build <span>Brands</span>
+                        </h1>
+                        <p>We craft modern, scalable digital products with clarity, transparency, and impact.</p>
+                    </div>
+                    <div className="cta-section flex flex-col justify-center items-center gap-4">
+                        <button>Book a call</button>
+                        <Link smooth to="/#process" className=" transition">
+                            Too soon? Keep scrolling.
+                        </Link>
                     </div>
                 </div>
-
-                <div className="abstract-design">
-                    <img src="/images/graphy.png" alt="abstract background" />
-                </div>
-            </div>
-
-            <div className="image-container md:w-1/2 md:pt-24">
-                <img src="/images/Hero-Logo.png" alt="" />
             </div>
         </section>
     );
