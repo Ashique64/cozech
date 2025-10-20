@@ -1,0 +1,37 @@
+#contact {
+    .contact-container {
+        .title-section {
+            padding: 0 clamp(1rem, 10vw, 150px);
+            h2 {
+                font-size: clamp(28px, 3vw, 48px);
+                font-weight: 600;
+                line-height: 150%;
+                letter-spacing: 0;
+                color: var(--ternary-color);
+                text-transform: uppercase;
+
+                span {
+                    color: var(--secondary-color);
+                }
+            }
+            p {
+                color: var(--para-color);
+                font-size: clamp(14px, 1.25vw, 18px);
+                font-weight: 400;
+                line-height: 150%;
+            }
+        }
+
+        .form-section {
+            // padding: 60px;
+            
+            .contact-details {
+                background-color: rgba(7, 7, 7, 0.5);
+                border: 1px solid rgba(0, 0, 0, 0.12);
+                padding: 20px 40px;
+                border-radius: 24px;
+                
+            }
+        }
+    }
+}

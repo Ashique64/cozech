@@ -9,6 +9,7 @@ const Services = React.lazy(() => import("./components/Services/Services"));
 const Projects = React.lazy(() => import("./components/Projects/Projects"));
 const About = React.lazy(() => import("./components/About/About"));
 const CTA = React.lazy(() => import("./components/CTA/CTA"));
+const Contact = React.lazy(() => import("./components/Contact/Contact"));
 const Footer = React.lazy(() => import("./components/Footer/Footer"));
 
 function Loader() {
@@ -32,6 +33,7 @@ function App() {
             <Projects />
             <About />
             <CTA />
+            <Contact />
             <Footer />
         </Suspense>
     );
