@@ -35,7 +35,7 @@ const processData = [
 const Process = () => {
     return (
         <section id="process" className="process w-full min-h-screen flex items-center justify-center md:px-20 md:py-20">
-            <div className="process-container flex flex-col gap-10 justify-center items-center w-full">
+            <div className="process-container flex flex-col gap-10 justify-center items-center max-w-[1280px] w-full mx-auto px-4">
                 <div className="title-section text-center">
                     <h2>
                         Plan. Execute. <span>Achieve.</span>

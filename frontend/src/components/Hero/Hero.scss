@@ -13,7 +13,7 @@
             .title-section {
                 text-align: center;
                 .main-title {
-                    font-size: 100px;
+                    font-size: clamp(60px, 7.8vw, 120px);
                     font-weight: 700;
                     line-height: 100%;
                     letter-spacing: 0%;
@@ -26,7 +26,7 @@
                 }
                 p {
                     font-weight: 400;
-                    font-size: 16px;
+                    font-size: clamp(14px, 1.25vw, 18px);
                     line-height: 150%;
                     letter-spacing: 0;
                     color: var(--ternary-color-2);
@@ -45,10 +45,11 @@
 
                 a {
                     font-weight: 400;
-                    font-size: 16px;
+                    font-size: clamp(14px, 1vw, 18px);
                     line-height: 150%;
                     letter-spacing: 0;
                     color: var(--ternary-color-2);
+                    
                 }
             }
         }

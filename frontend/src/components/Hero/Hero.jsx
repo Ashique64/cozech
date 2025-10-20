@@ -23,7 +23,7 @@ const Hero = () => {
                     <div className="cta-section flex flex-col justify-center items-center gap-4">
                         <button>Book a call</button>
                         <Link smooth to="/#process" className=" transition">
-                            Too soon? Keep scrolling.
+                            Too soon? <span>Keep scrolling</span>
                         </Link>
                     </div>
                 </div>
