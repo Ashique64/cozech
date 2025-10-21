@@ -18,7 +18,7 @@ const CTA = () => {
                                 Get Started
                             </button>
                             <button type="button" className="btn2">
-                                Book a call
+                                Book a Call
                             </button>
                         </div>
                     </div>

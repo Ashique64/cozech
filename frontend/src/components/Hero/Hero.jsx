@@ -21,7 +21,7 @@ const Hero = () => {
                         <p>We craft modern, scalable digital products with clarity, transparency, and impact.</p>
                     </div>
                     <div className="cta-section flex flex-col justify-center items-center gap-4">
-                        <button>Book a call</button>
+                        <button>Book a Call</button>
                         <Link smooth to="/#process" className=" transition">
                             Too soon? <span>Keep scrolling</span>
                         </Link>
