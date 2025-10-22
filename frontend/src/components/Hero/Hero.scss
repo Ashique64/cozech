@@ -5,25 +5,48 @@
             rgba(0, 0, 0, 0) 0%,
             rgba(0, 0, 0, 0) 60%,
             rgba(0, 0, 0, 0.3) 80%,
-            #0F0F0F 100%
+            #0f0f0f 100%
         );
     }
+
     .container {
         .section-wrapper {
             .title-section {
                 text-align: center;
+
                 .main-title {
                     font-size: clamp(60px, 7.8vw, 120px);
                     font-weight: 700;
                     line-height: 100%;
                     letter-spacing: 0%;
                     text-transform: uppercase;
-                    font-family: "IBM Plex Sans Condensed";
+                    // font-family: "IBM Plex Sans Condensed";
 
-                    span {
+                    .rotating-words-wrapper {
                         display: block;
+                        position: relative;
+                        min-height: 1.2em;
+                        margin-top: 0.1em;
+
+                        .rotating-word {
+                            position: absolute;
+                            left: 50%;
+                            top: 0;
+                            transform: translateX(-50%);
+                            white-space: nowrap;
+                            opacity: 0;
+                            will-change: transform, opacity;
+                            background: var(--gradient-accent);
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            color: transparent;
+                            -webkit-text-fill-color: transparent;
+                            font-weight: inherit;
+                            font-size: inherit;
+                        }
                     }
                 }
+
                 p {
                     font-weight: 400;
                     font-size: clamp(14px, 1.25vw, 18px);
@@ -41,6 +64,13 @@
                     color: var(--button-color-2);
                     font-size: clamp(13px, 1.1vw, 16px);
                     font-weight: 400;
+                    cursor: pointer;
+                    transition: transform 0.2s ease;
+                    border: none;
+
+                    &:hover {
+                        transform: scale(1.05);
+                    }
                 }
 
                 a {
@@ -49,7 +79,15 @@
                     line-height: 150%;
                     letter-spacing: 0;
                     color: var(--ternary-color-2);
-                    
+                    text-decoration: none;
+
+                    span {
+                        text-decoration: underline;
+                    }
+
+                    &:hover {
+                        color: var(--secondary-color);
+                    }
                 }
             }
         }

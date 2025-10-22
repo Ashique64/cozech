@@ -22,6 +22,21 @@ html {
     --para-color: #808080;
     --button-color-2: #1A1A1A;
     --card-bg: #1a1a1a;
+    --gradient-accent: linear-gradient(90deg, #FFD500 0%, #FF6B00 100%);
+
+    /* --gradient-accent: linear-gradient(135deg, #ffd200 0%, #f7971e 100%); */
+    /* --gradient-accent-2: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); */
+    /* --gradient-accent-3: linear-gradient(135deg, #f3a3fc 0%, #f7687d 100%); */
+    /* --gradient-accent-4: linear-gradient(135deg, #42a5f5 0%, #26c6da 100%); */
+    /* --gradient-accent-5: linear-gradient(135deg, #7c93f5 0%, #8b5cb8 100%); */
+    
+
+
+
+
+
+
+    
 
 
     
