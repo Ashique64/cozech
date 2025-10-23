@@ -50,12 +50,60 @@
                     border-radius: 56px;
                     padding: clamp(12px, 1.1vw, 16px) clamp(18px, 1.6vw, 24px);
                     background: var(--secondary-color);
-                    color: var(--button-color-2);
+                    color: var(--primary-color);
                     font-size: clamp(13px, 1.1vw, 16px);
                     font-weight: 400;
                     cursor: pointer;
-                    // transition: transform 0.2s ease;
-                    border: none;
+                    border: 1px solid var(--secondary-color);
+                    position: relative;
+                    transition: all 0.3s ease;
+                    overflow: hidden;
+                    
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 2px;
+                        left: -15px;
+                        right: -15px;
+                        bottom: 2px;
+                        background: var(--gradient-accent);
+                        border-radius: inherit;
+                        z-index: -1;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                    }
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        inset: 3px;
+                        background: var(--secondary-color);
+                        border-radius: inherit;
+                        transition: background 0.3s ease;
+                        z-index: -1;
+                    }
+
+                    span {
+                        position: relative;
+                        z-index: 2;
+                    }
+
+                    &:hover {
+                        border-color: transparent;
+                        transform: translateY(-2px);
+
+                        &::before {
+                            opacity: 1;
+                            animation: rotate 4s linear infinite;
+                        }
+
+                        &::after {
+                            background: var(--primary-color);
+                        }
+
+                        color: var(--secondary-color);
+                    }
                 }
 
                 a {
@@ -81,12 +129,19 @@
                         span {
                             text-decoration: none;
                             background: var(--gradient-accent);
-
-                            
                         }
                     }
                 }
             }
         }
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
