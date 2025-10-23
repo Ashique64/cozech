@@ -157,7 +157,7 @@ const Hero = () => {
 
     return (
         <section id="home" className="home relative w-full h-screen flex items-center justify-center overflow-hidden">
-            <video className="absolute top-0 left-0 w-full h-full object-cover" autoPlay loop muted playsInline>
+            <video className="absolute top-0 left-0 w-full h-full object-cover" autoPlay loop muted playsInline poster="/images/hero-poster.png" >
                 <source src="/videos/Hero-bg.webm" type="video/webm" />
                 <source src="/videos/Hero-bg.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
