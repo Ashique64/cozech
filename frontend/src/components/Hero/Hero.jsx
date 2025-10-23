@@ -2,121 +2,188 @@ import React, { useRef } from "react";
 import { HashLink as Link } from "react-router-hash-link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/SplitText";
 import "./Hero.scss";
 
+gsap.registerPlugin(SplitText);
+
 const Hero = () => {
-    const rotatingWords = ["Brands", "Products", "Experiences", "Interfaces", "Platforms"];
+    const rotatingWords = ["Brands", "Interfaces", "Experiences", "Ideas", "Products"];
 
-    const wordsRef = useRef([]);
-    const tlRef = useRef(null);
+    const rotatingRef = useRef(null);
     const containerRef = useRef(null);
+    const tlRef = useRef(null);
+    const mainTitleRef = useRef(null);
+    const descRef = useRef(null);
+    const ctaRef = useRef(null);
 
-    const setWordRef = (el, i) => {
-        if (el) wordsRef.current[i] = el;
-    };
+    useGSAP(() => {
+        const masterTl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    const handleMouseEnter = () => {
-        tlRef.current?.pause();
-    };
-
-    const handleMouseLeave = () => {
-        tlRef.current?.play();
-    };
-
-    useGSAP(
-        () => {
-            const words = wordsRef.current.filter(Boolean);
-            if (!words.length) return;
-
-            // Initial states: hide all words except first
-            gsap.set(words, { y: 30, opacity: 0, autoAlpha: 0 }); // Start below
-            gsap.set(words[0], { y: 0, opacity: 1, autoAlpha: 1 }); // First word in position
-
-            // Create infinite timeline
-            const tl = gsap.timeline({
-                repeat: -1,
-                repeatDelay: 0.8,
-                defaults: { ease: "power2.inOut" },
+        if (mainTitleRef.current) {
+            const mainSplit = new SplitText(mainTitleRef.current, {
+                type: "chars, words",
+                charsClass: "char",
+                wordsClass: "word",
             });
 
-            // Build animation sequence for each word
-            for (let i = 0; i < words.length; i++) {
-                const current = words[i];
-                const next = words[(i + 1) % words.length];
+            gsap.set(mainSplit.chars, {
+                opacity: 0,
+                y: -100,
+                rotateX: 90,
+                transformOrigin: "50% 50%",
+            });
 
-                // Hold current word (visible and in position)
-                tl.to(current, { duration: 0.6, y: 0, opacity: 1 }, "+=1.2");
+            masterTl.to(
+                mainSplit.chars,
+                {
+                    opacity: 1,
+                    y: 0,
+                    rotationX: 0,
+                    duration: 1.2,
+                    stagger: 0.03,
+                    ease: "back.out(1.2)",
+                },
+                0.3
+            );
+        }
 
-                // Slide current word UP and fade out
-                tl.to(current, { 
-                    duration: 0.5, 
-                    y: -30,           // Move UP (negative value)
-                    opacity: 0, 
-                    autoAlpha: 0 
-                });
+        const wordEl = rotatingRef.current;
+        if (!wordEl) return;
 
-                // Position next word BELOW
-                tl.set(next, { y: 30, opacity: 0, autoAlpha: 0 }); // Start from below (positive value)
-                
-                // Slide next word UP into view (from below to center)
-                tl.to(next, { 
-                    duration: 0.5, 
-                    y: 0,             // Move to center
-                    opacity: 1, 
-                    autoAlpha: 1 
-                }, "-=0.3"); // Overlap for smooth transition
+        gsap.set(wordEl, { y: 30, opacity: 0, autoAlpha: 0, rotateX: 90 });
+        wordEl.textContent = rotatingWords[0];
+
+        masterTl.to(
+            wordEl,
+            {
+                y: 0,
+                opacity: 1,
+                autoAlpha: 1,
+                rotateX: 0,
+                duration: 1.2,
+                ease: "back.out(1.2)",
+            },
+            0.5
+        );
+
+        if (descRef.current) {
+            gsap.set(descRef.current, { opacity: 0, y: 18 });
+            masterTl.to(descRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, ">-=0.2");
+        }
+
+        if (ctaRef.current) {
+            const button = ctaRef.current.querySelector("button");
+            const linkElement = ctaRef.current.querySelector("a");
+
+            if (linkElement) {
+                linkElement.style.transition = "none";
+                linkElement.classList.remove("transition");
             }
 
-            tlRef.current = tl;
-        },
-        { scope: containerRef }
-    );
+            gsap.set(button, {
+                opacity: 0,
+                y: 20,
+                force3D: true,
+            });
+
+            gsap.set(linkElement, {
+                opacity: 0,
+                y: 20,
+                force3D: true,
+            });
+
+            masterTl.to(
+                button,
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    force3D: true,
+                },
+                ">-=0.2"
+            );
+
+            masterTl.to(
+                linkElement,
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    force3D: true,
+                    onComplete: () => {
+                        if (linkElement) {
+                            linkElement.style.transition = "";
+                            linkElement.classList.add("transition");
+                        }
+                    },
+                },
+                ">-=0.4"
+            );
+        }
+
+        const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.5, defaults: { ease: "power2.inOut" } });
+        let idx = 0;
+
+        const animateSwap = () => {
+            const nextIdx = (idx + 1) % rotatingWords.length;
+
+            tl.to(wordEl, { duration: 0.8, y: -40, opacity: 0, autoAlpha: 0 }, "+=3");
+            tl.add(() => {
+                wordEl.textContent = rotatingWords[nextIdx];
+                gsap.set(wordEl, { y: 40, opacity: 0, autoAlpha: 0 });
+            });
+            tl.to(wordEl, { duration: 0.8, y: 0, opacity: 1, autoAlpha: 1 }, "-=0.1");
+
+            idx = nextIdx;
+        };
+
+        for (let i = 0; i < rotatingWords.length; i++) {
+            animateSwap();
+        }
+
+        tlRef.current = tl;
+
+        return () => {
+            if (tlRef.current) {
+                tlRef.current.kill();
+                tlRef.current = null;
+            }
+            masterTl.kill();
+        };
+    }, []);
 
     return (
-        <section 
-            id="home" 
-            className="home relative w-full h-screen flex items-center justify-center overflow-hidden"
-        >
-            <video 
-                className="absolute top-0 left-0 w-full h-full object-cover" 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-            >
+        <section id="home" className="home relative w-full h-screen flex items-center justify-center overflow-hidden">
+            <video className="absolute top-0 left-0 w-full h-full object-cover" autoPlay loop muted playsInline>
                 <source src="/videos/Hero-bg.webm" type="video/webm" />
                 <source src="/videos/Hero-bg.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            
+
             <div className="absolute inset-0 bg-black/50" />
             <div className="gradient-overlay absolute inset-0 pointer-events-none" />
-            
-            <div 
-                ref={containerRef} 
+
+            <div
+                ref={containerRef}
                 className="container relative z-10 max-w-[1280px] w-full mx-auto px-4 h-full flex items-center justify-center"
             >
                 <div className="section-wrapper w-full h-full pt-36 px-10 flex flex-col items-center justify-center gap-14">
-                    <div className="title-section flex flex-col justify-center items-center gap-4">
-                        <h1 className="main-title">
+                    <div className="title-section flex flex-col justify-center items-center gap-4 w-full">
+                        <h1 ref={mainTitleRef} className="main-title">
                             We build
-                            {/* ✅ NEW LINE: Rotating words on separate line */}
-                            <span className="rotating-words-wrapper">
-                                {rotatingWords.map((word, i) => (
-                                    <span
-                                        key={word}
-                                        ref={(el) => setWordRef(el, i)}
-                                        className="rotating-word"
-                                    >
-                                        {word}
-                                    </span>
-                                ))}
-                            </span>
                         </h1>
-                        <p>We craft modern, scalable digital products with clarity, transparency, and impact.</p>
+                        <h1 ref={rotatingRef} className="rotating-word" aria-live="polite" />
+
+                        <p ref={descRef}>
+                            We craft seamless, high-performing digital experiences that elevate brands and drive meaningful
+                            engagement.
+                        </p>
                     </div>
-                    
-                    <div className="cta-section flex flex-col justify-center items-center gap-4">
+
+                    <div ref={ctaRef} className="cta-section flex flex-col justify-center items-center gap-4">
                         <button>Book a Call</button>
                         <Link smooth to="/#process" className="transition">
                             Too soon? <span>Keep scrolling</span>

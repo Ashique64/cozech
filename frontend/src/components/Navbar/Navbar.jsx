@@ -6,7 +6,7 @@ const Navbar = () => {
         <nav id="navbar" className="navbar w-full">
             <div className="navbar-container w-full flex justify-between items-center md:px-20 md:py-5">
                 <div className="logo">
-                    <img src="/images/socialMedia/svg/Logo.svg" alt="Logo" />
+                    <img src="/images/socialMedia/svg/Logo-2.svg" alt="Logo" />
                 </div>
                 <div className="items flex gap-6">
                     <a href="#home">Home</a>

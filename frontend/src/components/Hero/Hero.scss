@@ -21,30 +21,19 @@
                     letter-spacing: 0%;
                     text-transform: uppercase;
                     // font-family: "IBM Plex Sans Condensed";
-
-                    .rotating-words-wrapper {
-                        display: block;
-                        position: relative;
-                        min-height: 1.2em;
-                        margin-top: 0.1em;
-
-                        .rotating-word {
-                            position: absolute;
-                            left: 50%;
-                            top: 0;
-                            transform: translateX(-50%);
-                            white-space: nowrap;
-                            opacity: 0;
-                            will-change: transform, opacity;
-                            background: var(--gradient-accent);
-                            background-clip: text;
-                            -webkit-background-clip: text;
-                            color: transparent;
-                            -webkit-text-fill-color: transparent;
-                            font-weight: inherit;
-                            font-size: inherit;
-                        }
-                    }
+                }
+                .rotating-word {
+                    font-size: clamp(60px, 7.8vw, 120px);
+                    font-weight: 700;
+                    line-height: 100%;
+                    letter-spacing: 0%;
+                    text-transform: uppercase;
+                    background: var(--gradient-accent);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    color: transparent;
+                    -webkit-text-fill-color: transparent;
+                    // font-family: "IBM Plex Sans Condensed";
                 }
 
                 p {
@@ -65,12 +54,8 @@
                     font-size: clamp(13px, 1.1vw, 16px);
                     font-weight: 400;
                     cursor: pointer;
-                    transition: transform 0.2s ease;
+                    // transition: transform 0.2s ease;
                     border: none;
-
-                    &:hover {
-                        transform: scale(1.05);
-                    }
                 }
 
                 a {
@@ -81,12 +66,24 @@
                     color: var(--ternary-color-2);
                     text-decoration: none;
 
+                    &.transition {
+                        transition: color 0.3s ease, text-decoration 0.3s ease;
+                    }
+
                     span {
                         text-decoration: underline;
+                        transition: inherit;
                     }
 
                     &:hover {
                         color: var(--secondary-color);
+
+                        span {
+                            text-decoration: none;
+                            background: var(--gradient-accent);
+
+                            
+                        }
                     }
                 }
             }
