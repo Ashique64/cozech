@@ -1,5 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+import { useGSAP } from "@gsap/react";
 import "./Process.scss";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const processData = [
     {
@@ -33,22 +39,108 @@ const processData = [
 ];
 
 const Process = () => {
+    const sectionRef = useRef(null);
+    const titleRef = useRef(null);
+    const descriptionRef = useRef(null);
+    const cardsRef = useRef([]);
+    const buttonRef = useRef(null);
+    const abstractRefs = useRef([]);
+
+    useGSAP(() => {
+        // const splitTitle = new SplitText(titleRef.current, {
+        //     type: "words, chars",
+        //     wordsClass: "word",
+        //     charsClass: "char",
+        // });
+
+        const titleTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: titleRef.current,
+                start: "top 85%",
+                end: "bottom 15%",
+                toggleActions: "play none none reverse",
+            },
+        });
+
+        titleTl
+            .from(titleRef.current, {
+                opacity: 0,
+                y: 50,
+                rotateX: -90,
+                stagger: {
+                    amount: 0.6,
+                    from: "left",
+                },
+                duration: 0.8,
+                ease: "back.out(1.7)",
+            })
+            .from(
+                descriptionRef.current,
+                {
+                    opacity: 0,
+                    y: 30,
+                    duration: 0.8,
+                    ease: "power2.out",
+                },
+                "-=0.4"
+            );
+
+        gsap.from(cardsRef.current, {
+            scrollTrigger: {
+                trigger: ".card-section",
+                start: "top 75%",
+                end: "bottom 25%",
+                toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            y: 10,
+            scale: 0.9,
+            rotationY: 15,
+            stagger: {
+                amount: 0.8,
+                from: "start",
+            },
+            duration: 1,
+            ease: "power3.out",
+        });
+
+        cardsRef.current.forEach((card) => {
+            if (card) {
+                const icon = card.querySelector(".logo img");
+                gsap.to(icon, {
+                    rotation: 360,
+                    duration: 20,
+                    repeat: -1,
+                    ease: "none",
+                });
+            }
+        });
+    });
+
     return (
-        <section id="process" className="process w-full min-h-screen flex items-center justify-center md:px-20 md:py-20">
+        <section
+            ref={sectionRef}
+            id="process"
+            className="process w-full min-h-screen flex items-center justify-center md:px-20 md:py-20"
+        >
             <div className="process-container flex flex-col gap-10 justify-center items-center max-w-[1280px] w-full mx-auto px-4">
                 <div className="title-section text-center">
-                    <h2 data-text="Plan. Execute. Achieve.">
+                    <h2 ref={titleRef} data-text="Plan. Execute. Achieve.">
                         Plan. Execute. <span>Achieve.</span>
                     </h2>
-                    <p className="description">
+                    <p ref={descriptionRef} className="description">
                         A milestone-driven approach that keeps your projects transparent, organized, and stress-free from
                         start to finish.
                     </p>
                 </div>
 
                 <div className="card-section flex justify-center items-stretch gap-6 flex-wrap w-full">
-                    {processData.map((item) => (
-                        <div key={item.id} className="card-wrapper w-full md:w-[calc(50%-12px)] px-3 mb-8">
+                    {processData.map((item, index) => (
+                        <div
+                            key={item.id}
+                            ref={(el) => (cardsRef.current[index] = el)}
+                            className="card-wrapper w-full md:w-[calc(50%-12px)] px-3 mb-8"
+                        >
                             {item.hasAbstractDesign && (
                                 <div className="abstract-design">
                                     <img src="/images/process/card-layer.png" alt="" />
@@ -71,8 +163,8 @@ const Process = () => {
 
                 <div className="button-section">
                     <button>
-                        view our pricing policy
-                        <span>
+                        <span className="button-text">view our pricing policy</span>
+                        <span className="arrow-icon">
                             <i>
                                 <svg
                                     width="14"
