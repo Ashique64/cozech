@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Services.scss";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const servicesData = [
     {
@@ -65,8 +69,55 @@ const servicesData = [
 ];
 
 const Services = () => {
+    const sectionRef = useRef(null);
+    const stRef = useRef(null);
+
+    useEffect(() => {
+        const el = sectionRef.current;
+        if (!el) return;
+
+        const initialBg =
+            getComputedStyle(document.documentElement).getPropertyValue("--primary-color").trim() || "#0F0F0F";
+        const servicesBg = "#ffffff";
+
+        // small helper that animates the CSS var (respects GSAP easing)
+        const setBg = (color) => {
+            // if user wants reduced motion, skip animation
+            if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                document.documentElement.style.setProperty("--primary-color", color);
+                return;
+            }
+            gsap.to(document.documentElement, {
+                duration: 0.5,
+                ease: "power1.out",
+                // animate CSS custom property
+                "--primary-color": color,
+            });
+        };
+
+        const st = ScrollTrigger.create({
+            trigger: el,
+            start: "top top", // top of section reaches 200px from viewport top
+            end: "80% top", // until section bottom reaches top of viewport
+            onEnter: () => setBg(servicesBg),
+            onEnterBack: () => setBg(servicesBg),
+            onLeave: () => setBg(initialBg),
+            onLeaveBack: () => setBg(initialBg),
+            invalidateOnRefresh: true,
+            markers: true, // enable while debugging
+        });
+
+        return () => {
+            st.kill();
+        };
+    }, []);
+
     return (
-        <section id="services" className="services w-full min-h-screen flex flex-col items-center justify-center md:p-20">
+        <section
+            ref={sectionRef}
+            id="services"
+            className="services w-full min-h-screen flex flex-col items-center justify-center md:p-20"
+        >
             <div className="service-container flex flex-col gap-20 justify-center items-center max-w-[1280px] w-full mx-auto px-4">
                 <div className="title-section flex flex-col md:gap-4 text-center">
                     <h2 className="title font-semibold">
