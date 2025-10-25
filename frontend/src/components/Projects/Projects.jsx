@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { HashLink as Link } from "react-router-hash-link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Projects.scss";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Projects = () => {
+    const sectionRef = useRef(null);
+    const titleRef = useRef(null);
+    const descriptionRef = useRef(null);
+    const cardsRef = useRef([]);
+
     const projectsItems = [
         {
             id: 1,
@@ -33,35 +42,94 @@ const Projects = () => {
             imageUrl: "/images/projects/project-4.png",
         },
     ];
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from(titleRef.current, {
+                y: 30,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: titleRef.current,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse",
+                },
+            });
+
+            gsap.from(descriptionRef.current, {
+                y: 20,
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.2,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: descriptionRef.current,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse",
+                },
+            });
+
+            gsap.from(cardsRef.current, {
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: ".projects-item-section",
+                    start: "top 70%",
+                    toggleActions: "play none none reverse",
+                },
+            });
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section id="projects" className="projects w-full min-h-screen flex flex-col items-center justify-center md:p-20">
+        <section
+            id="projects"
+            ref={sectionRef}
+            className="projects w-full min-h-screen flex flex-col items-center justify-center md:p-20"
+        >
             <div className="projects-container flex flex-col gap-20 justify-center items-center max-w-[1280px] w-full mx-auto px-4">
                 <div className="title-section flex flex-col md:gap-4 text-center">
-                    <h2 className="title font-semibold">
+                    <h2
+                        ref={titleRef}
+                        className="title font-semibold"
+                        data-text="Crafted with Purpose"
+                    >
                         Crafted with <span>Purpose</span>
                     </h2>
-                    <p className="description">A glimpse into the digital experiences we’ve designed and built.</p>
+                    <p ref={descriptionRef} className="description">
+                        A glimpse into the digital experiences we've designed and built.
+                    </p>
                 </div>
 
                 <div className="projects-item-section grid grid-cols-1 md:grid-cols-2 md:gap-10 w-full">
                     {projectsItems.map((item, index) => (
-                    <div className="card-wrapper " key={index}>
-                        <div className="card overflow-hidden flex flex-col justify-between items-center md:gap-10">
-                            <div className="image">
-                                <img src={item.imageUrl} alt={item.title} />
-                            </div>
-                            <div className="content flex flex-col items-start gap-5 w-full">
-                                <h3 className="title">{item.title}</h3>
-                                <p className="description">
-                                    {item.description}
-                                </p>
-                            </div>
+                        <div
+                            className="card-wrapper"
+                            key={index}
+                            ref={(el) => (cardsRef.current[index] = el)}
+                        >
+                            <div className="card overflow-hidden flex flex-col justify-between items-center md:gap-10">
+                                <div className="image">
+                                    <img src={item.imageUrl} alt={item.title} />
+                                </div>
+                                <div className="content flex flex-col items-start gap-5 w-full">
+                                    <h3 className="title">{item.title}</h3>
+                                    <p className="description">{item.description}</p>
+                                </div>
 
-                            <Link className="button w-full flex justify-start">
-                                <button>view project</button>
-                            </Link>
+                                <Link className="project-button w-full flex justify-start">
+                                    <button>
+                                        <span>view project</span>
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
                     ))}
                 </div>
             </div>

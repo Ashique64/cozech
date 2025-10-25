@@ -106,8 +106,8 @@ const Services = () => {
                 return;
             }
             gsap.to(document.documentElement, {
-                duration: 0.5,
-                ease: "power1.out",
+                duration: 0.4,
+                ease: "power2.out",
                 "--primary-color": color,
                 onComplete: () => {
                     if (color === servicesBg) addGradient();
