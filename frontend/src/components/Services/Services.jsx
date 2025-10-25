@@ -10,7 +10,7 @@ const servicesData = [
         id: 1,
         title: "web development",
         description:
-            "We create responsive, high-performing websites that blend functionality with design. Whether you’re launching your first site or scaling up, we build experiences that convert and grow with you.",
+            "We create responsive, high-performing websites that blend functionality with design. Whether you're launching your first site or scaling up, we build experiences that convert and grow with you.",
         icon: (
             <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -70,7 +70,9 @@ const servicesData = [
 
 const Services = () => {
     const sectionRef = useRef(null);
-    const stRef = useRef(null);
+    const cardsRef = useRef([]);
+    const titleRef = useRef(null);
+    const descriptionRef = useRef(null);
 
     useEffect(() => {
         const el = sectionRef.current;
@@ -80,35 +82,125 @@ const Services = () => {
             getComputedStyle(document.documentElement).getPropertyValue("--primary-color").trim() || "#0F0F0F";
         const servicesBg = "#ffffff";
 
-        // small helper that animates the CSS var (respects GSAP easing)
+        const titleEl = el.querySelector(".title-main");
+        const cardIcons = el.querySelectorAll(".icon");
+        const cardTitles = el.querySelectorAll(".card-title");
+
+        const addGradient = () => {
+            if (titleEl) titleEl.classList.add("gradient-text");
+            cardIcons.forEach((icon) => icon.classList.add("icon-gradient"));
+            cardTitles.forEach((n) => n.classList.add("ternary-text"));
+        };
+
+        const removeGradient = () => {
+            if (titleEl) titleEl.classList.remove("gradient-text");
+            cardIcons.forEach((icon) => icon.classList.remove("icon-gradient"));
+            cardTitles.forEach((n) => n.classList.remove("ternary-text"));
+        };
+
         const setBg = (color) => {
-            // if user wants reduced motion, skip animation
             if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
                 document.documentElement.style.setProperty("--primary-color", color);
+                if (color === servicesBg) addGradient();
+                else removeGradient();
                 return;
             }
             gsap.to(document.documentElement, {
                 duration: 0.5,
                 ease: "power1.out",
-                // animate CSS custom property
                 "--primary-color": color,
+                onComplete: () => {
+                    if (color === servicesBg) addGradient();
+                    else removeGradient();
+                },
             });
         };
 
+        gsap.set(titleRef.current, { opacity: 0, y: 30 });
+        gsap.set(descriptionRef.current, { opacity: 0, y: 20 });
+        gsap.set(cardsRef.current, { opacity: 0, y: 60 });
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                end: "bottom 15%",
+                toggleActions: "play none none reverse",
+            },
+        });
+
+        tl.to(titleRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+        })
+        .to(descriptionRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out",
+        }, "-=0.5")
+        .to(cardsRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            stagger: 0.15,
+            ease: "power2.out",
+        }, "-=0.3");
+
         const st = ScrollTrigger.create({
             trigger: el,
-            start: "top top", // top of section reaches 200px from viewport top
-            end: "80% top", // until section bottom reaches top of viewport
+            start: "top 150px",
+            end: "80% top",
             onEnter: () => setBg(servicesBg),
             onEnterBack: () => setBg(servicesBg),
             onLeave: () => setBg(initialBg),
             onLeaveBack: () => setBg(initialBg),
             invalidateOnRefresh: true,
-            markers: true, // enable while debugging
+        });
+
+        ScrollTrigger.refresh();
+        const isInside = st && st.isActive;
+        if (isInside) setBg(servicesBg);
+        else setBg(initialBg);
+
+        cardsRef.current.forEach((card, idx) => {
+            if (!card) return;
+            const overlay = card.querySelector(".card-overlay");
+            if (!overlay) return;
+
+            card.addEventListener("mouseenter", () => {
+                gsap.fromTo(
+                    overlay,
+                    {
+                        left: 0,
+                        width: "0%",
+                    },
+                    {
+                        width: "100%",
+                        duration: 0.5,
+                        ease: "power2.out",
+                    }
+                );
+            });
+
+            card.addEventListener("mouseleave", () => {
+                gsap.to(overlay, {
+                    left: "100%",
+                    width: "0%",
+                    duration: 0.5,
+                    ease: "power2.out",
+                    onComplete: () => {
+                        gsap.set(overlay, { left: 0 });
+                    },
+                });
+            });
         });
 
         return () => {
             st.kill();
+            tl.kill();
         };
     }, []);
 
@@ -120,18 +212,23 @@ const Services = () => {
         >
             <div className="service-container flex flex-col gap-20 justify-center items-center max-w-[1280px] w-full mx-auto px-4">
                 <div className="title-section flex flex-col md:gap-4 text-center">
-                    <h2 className="title font-semibold">
-                        Design. Develop. <span>Deliver.</span>
+                    <h2 ref={titleRef} className="title font-semibold">
+                        <span className="title-main">Design. Develop.</span> <span className="title-accent">Deliver.</span>
                     </h2>
-                    <p className="description">
+                    <p ref={descriptionRef} className="description">
                         From web platforms to mobile apps and brand experiences — we bring your ideas to life through
                         design, technology, and strategy.
                     </p>
                 </div>
                 <div className="card-section flex justify-center items-stretch gap-6 flex-wrap w-full">
-                    <div className="card-wrapper w-full flex justify-center items-center">
+                    <div className="card-wrapper w-full grid grid-cols-1 md:grid-cols-3">
                         {servicesData.map((service, index) => (
-                            <div key={service.id} className="card md:w-1/3 flex justify-between min-h-[360px]">
+                            <div
+                                key={service.id}
+                                ref={(el) => (cardsRef.current[index] = el)}
+                                className="card flex justify-between min-h-[360px] md:border-r border-[#72727256] last:border-r-0"
+                            >
+                                <div className="card-overlay"></div>
                                 <div className="items-wrapper flex flex-col justify-center items-center gap-10 h-full p-5">
                                     <div className="item-1 flex justify-center items-center p-8 gap-3">
                                         <img src="/images/services/card-layer.png" alt="" />
@@ -142,9 +239,6 @@ const Services = () => {
                                         <p className="card-description">{service.description}</p>
                                     </div>
                                 </div>
-                                {index !== servicesData.length - 1 && (
-                                    <div className="line border-r border-[#1F1F1F]"></div>
-                                )}
                             </div>
                         ))}
                     </div>

@@ -7,12 +7,16 @@
                 font-weight: 600;
                 line-height: 150%;
                 letter-spacing: 0;
-                color: var(--ternary-color);
                 text-transform: uppercase;
+                position: relative;
+                display: inline-block;
 
-
-                span {
+                .title-main {
                     color: var(--secondary-color);
+                }
+
+                .title-accent {
+                    color: var(--ternary-color);
                 }
             }
             p {
@@ -27,7 +31,21 @@
             .card-wrapper {
                 .card {
                     overflow: hidden;
+                    position: relative;
+                    .card-overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 0%;
+                        height: 100%;
+                        background: var(--gradient-accent-2);
+                        // background: linear-gradient(90deg, rgba(233, 109, 21, 0.12) 0%, rgba(233, 109, 21, 0.08) 100%);
+                        z-index: 0;
+                        pointer-events: none;
+                    }
                     .items-wrapper {
+                        position: relative;
+                        z-index: 1;
                         .item-1 {
                             position: relative;
                             border: 6px solid var(--ternary-color);
@@ -50,6 +68,12 @@
                             .icon {
                                 width: 34px;
                                 height: 34px;
+                                path {
+                                    fill: var(--secondary-color);
+                                }
+                                &.icon-gradient path {
+                                    fill: rgb(233, 110, 21);
+                                }
                             }
                         }
                         .item-2 {

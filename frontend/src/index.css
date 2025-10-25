@@ -23,27 +23,8 @@ html {
     --button-color-2: #1A1A1A;
     --card-bg: #1a1a1a;
     --gradient-accent: linear-gradient(90deg, #FFD500 0%, #FF6B00 100%);
-
-    /* --gradient-accent: linear-gradient(135deg, #ffd200 0%, #f7971e 100%); */
-    /* --gradient-accent-2: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); */
-    /* --gradient-accent-3: linear-gradient(135deg, #f3a3fc 0%, #f7687d 100%); */
-    /* --gradient-accent-4: linear-gradient(135deg, #42a5f5 0%, #26c6da 100%); */
-    /* --gradient-accent-5: linear-gradient(135deg, #7c93f5 0%, #8b5cb8 100%); */
-    
-
-
-
-
-
-
-    
-
-
-    
-    /* --primary-color-2: #121212;
-    --secondary-color-2: #F5F5F5;
-    --primary-color-3: #1A1A1A;
-    --secondary-color-3: #FAFAFA; */
+    /* --gradient-accent-2: linear-gradient(90deg, #ffd500bc 0%, #ff6a00b9 100%); */
+    --gradient-accent-2: linear-gradient(90deg, #ffd50044 0%, #ff6a003e 100%);
 }
 
 
@@ -59,3 +40,24 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.gradient-text {
+  background: var(--gradient-accent);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; 
+  display: inline-block;
+  transition: background 400ms ease, -webkit-text-fill-color 400ms ease;
+}
+
+.ternary-text {
+  background: var(--ternary-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; 
+  display: inline-block;
+  transition: background 400ms ease, -webkit-text-fill-color 400ms ease;
+}
+
