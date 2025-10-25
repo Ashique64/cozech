@@ -158,7 +158,6 @@ const Services = () => {
             onLeave: () => setBg(initialBg),
             onLeaveBack: () => setBg(initialBg),
             invalidateOnRefresh: true,
-            markers: true
         });
 
         ScrollTrigger.refresh();
