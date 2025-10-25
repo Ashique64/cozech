@@ -152,12 +152,13 @@ const Services = () => {
         const st = ScrollTrigger.create({
             trigger: el,
             start: "top 150px",
-            end: "80% top",
+            end: "80% 100px",
             onEnter: () => setBg(servicesBg),
             onEnterBack: () => setBg(servicesBg),
             onLeave: () => setBg(initialBg),
             onLeaveBack: () => setBg(initialBg),
             invalidateOnRefresh: true,
+            markers: true
         });
 
         ScrollTrigger.refresh();
