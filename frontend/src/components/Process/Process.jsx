@@ -43,16 +43,8 @@ const Process = () => {
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
     const cardsRef = useRef([]);
-    const buttonRef = useRef(null);
-    const abstractRefs = useRef([]);
 
     useGSAP(() => {
-        // const splitTitle = new SplitText(titleRef.current, {
-        //     type: "words, chars",
-        //     wordsClass: "word",
-        //     charsClass: "char",
-        // });
-
         const titleTl = gsap.timeline({
             scrollTrigger: {
                 trigger: titleRef.current,
@@ -71,14 +63,15 @@ const Process = () => {
                     amount: 0.6,
                     from: "left",
                 },
-                duration: 0.8,
-                ease: "back.out(1.7)",
+                duration: 1,
+                ease: "power2.out",
             })
             .from(
                 descriptionRef.current,
                 {
                     opacity: 0,
-                    y: 30,
+                    y: 40,
+                    rotateX: -90,
                     duration: 0.8,
                     ease: "power2.out",
                 },

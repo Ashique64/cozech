@@ -180,14 +180,14 @@
         opacity: 0;
     }
     20% {
-        opacity: 0.6; /* quickly become visible */
+        opacity: 0.6;
     }
     60% {
         left: 110%;
-        opacity: 0.6; /* visible while sweeping */
+        opacity: 0.6; 
     }
     100% {
         left: 150%;
-        opacity: 0; /* fade out by the end */
+        opacity: 0;
     }
 }

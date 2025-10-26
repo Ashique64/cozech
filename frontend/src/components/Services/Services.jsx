@@ -116,8 +116,8 @@ const Services = () => {
             });
         };
 
-        gsap.set(titleRef.current, { opacity: 0, y: 30 });
-        gsap.set(descriptionRef.current, { opacity: 0, y: 20 });
+        gsap.set(titleRef.current, { opacity: 0, y: 80 });
+        gsap.set(descriptionRef.current, { opacity: 0, y: 40 });
         gsap.set(cardsRef.current, { opacity: 0, y: 60 });
 
         const tl = gsap.timeline({

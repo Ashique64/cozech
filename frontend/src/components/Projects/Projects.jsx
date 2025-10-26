@@ -46,9 +46,11 @@ const Projects = () => {
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.from(titleRef.current, {
-                y: 30,
+                y: 50,
                 opacity: 0,
-                duration: 0.8,
+                rotateX: -90,
+                transformOrigin: "50% 50%",
+                duration: 1,
                 ease: "power2.out",
                 scrollTrigger: {
                     trigger: titleRef.current,
@@ -58,9 +60,11 @@ const Projects = () => {
             });
 
             gsap.from(descriptionRef.current, {
-                y: 20,
+                y: 50,
                 opacity: 0,
                 duration: 0.8,
+                rotateX: -90,
+                transformOrigin: "50% 50%",
                 delay: 0.2,
                 ease: "power2.out",
                 scrollTrigger: {
@@ -95,11 +99,7 @@ const Projects = () => {
         >
             <div className="projects-container flex flex-col gap-20 justify-center items-center max-w-[1280px] w-full mx-auto px-4">
                 <div className="title-section flex flex-col md:gap-4 text-center">
-                    <h2
-                        ref={titleRef}
-                        className="title font-semibold"
-                        data-text="Crafted with Purpose"
-                    >
+                    <h2 ref={titleRef} className="title font-semibold" data-text="Crafted with Purpose">
                         Crafted with <span>Purpose</span>
                     </h2>
                     <p ref={descriptionRef} className="description">
@@ -109,11 +109,7 @@ const Projects = () => {
 
                 <div className="projects-item-section grid grid-cols-1 md:grid-cols-2 md:gap-10 w-full">
                     {projectsItems.map((item, index) => (
-                        <div
-                            className="card-wrapper"
-                            key={index}
-                            ref={(el) => (cardsRef.current[index] = el)}
-                        >
+                        <div className="card-wrapper" key={index} ref={(el) => (cardsRef.current[index] = el)}>
                             <div className="card overflow-hidden flex flex-col justify-between items-center md:gap-10">
                                 <div className="image">
                                     <img src={item.imageUrl} alt={item.title} />
