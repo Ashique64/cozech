@@ -34,9 +34,7 @@ body {
     transition: background-color 600ms ease;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+
 
 .gradient-text {
     background: var(--gradient-accent);
