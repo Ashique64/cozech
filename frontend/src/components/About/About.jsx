@@ -60,7 +60,7 @@ const About = () => {
         );
 
         tl.fromTo(
-            descriptionRef,
+            descriptionRef.current,
             {
                 opacity: 0,
                 y: 40,
