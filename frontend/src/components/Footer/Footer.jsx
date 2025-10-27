@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="footer-container flex flex-col md:gap-16 justify-center items-center w-full">
             <div className="section-1 flex justify-between items-start w-full">
                 <div className="logo">
-                    <img src="/images/socialMedia/svg/Logo.svg" alt="Logo" />
+                    <img src="/images/socialMedia/svg/Logo-2.svg" alt="Logo" />
                 </div>
                 <div className="social-media flex items-center gap-5 p-5">
                     <h6>Follow Us On Social Media</h6>
