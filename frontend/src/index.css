@@ -34,8 +34,6 @@ body {
     transition: background-color 600ms ease;
 }
 
-
-
 .gradient-text {
     background: var(--gradient-accent);
     background-size: 200% 100%;
@@ -57,4 +55,26 @@ body {
     color: transparent;
     display: inline-block;
     transition: background 400ms ease, -webkit-text-fill-color 400ms ease;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1ec4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-accent);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+::selection {
+  color: #0F0F0F;
+  background: #FFFFFF; 
 }
