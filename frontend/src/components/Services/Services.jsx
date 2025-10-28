@@ -80,7 +80,9 @@ const Services = () => {
 
         const initialBg =
             getComputedStyle(document.documentElement).getPropertyValue("--primary-color").trim() || "#0F0F0F";
-        const servicesBg = "#ffffff";
+        const servicesBg = "#FFF8F0";
+        // const servicesBg = "#1A1F2E";  // Dark slate blue
+
 
         const titleEl = el.querySelector(".title-main");
         const cardIcons = el.querySelectorAll(".icon");
@@ -106,8 +108,8 @@ const Services = () => {
                 return;
             }
             gsap.to(document.documentElement, {
-                duration: 0.4,
-                ease: "power2.out",
+                duration: 0.3,
+                ease: "power2.in",
                 "--primary-color": color,
                 onComplete: () => {
                     if (color === servicesBg) addGradient();
@@ -135,19 +137,27 @@ const Services = () => {
             duration: 0.8,
             ease: "power2.out",
         })
-        .to(descriptionRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "power2.out",
-        }, "-=0.5")
-        .to(cardsRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 0.9,
-            stagger: 0.15,
-            ease: "power2.out",
-        }, "-=0.3");
+            .to(
+                descriptionRef.current,
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "power2.out",
+                },
+                "-=0.5"
+            )
+            .to(
+                cardsRef.current,
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.9,
+                    stagger: 0.15,
+                    ease: "power2.out",
+                },
+                "-=0.3"
+            );
 
         const st = ScrollTrigger.create({
             trigger: el,

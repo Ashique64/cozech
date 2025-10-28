@@ -95,17 +95,25 @@
                         position: absolute;
                         inset: 0;
                         padding: 1px;
-                        // background: linear-gradient(
-                        //     118.78deg,
-                        //     rgba(255, 255, 255, 0.1) 0%,
-                        //     rgba(255, 255, 255, 0.05) 50%,
-                        //     rgba(255, 255, 255, 0) 100%
-                        // );
                         background: transparent;
                         border-radius: 16px;
+
+                        /* WebKit browsers (Chrome, Safari, Edge) */
+                        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                        -webkit-mask-composite: destination-out;
+
+                        /* Firefox */
+                        -moz-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                        -moz-mask-composite: exclude;
+
+                        /* Microsoft Edge (older versions) */
+                        -ms-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                        -ms-mask-composite: exclude;
+
+                        /* Standard (Modern browsers) */
                         mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-                        mask-composite: xor;
-                        -webkit-mask-composite: xor;
+                        mask-composite: exclude;
+
                         z-index: -1;
                         overflow: hidden;
                         transition: all 0.4s ease;
@@ -238,7 +246,7 @@
                 .arrow-icon {
                     position: relative;
                     z-index: 1;
-                    transition: transform 0.4s ease;
+                    transition: transform 0.4s ease-in-out;
                 }
 
                 &:hover {
@@ -249,7 +257,7 @@
                     }
 
                     .button-text {
-                        animation: float 0.6s ease;
+                        animation: float 1s ease;
                         font-weight: 600;
                     }
 
