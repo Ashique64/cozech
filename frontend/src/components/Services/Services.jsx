@@ -80,8 +80,8 @@ const Services = () => {
 
         const initialBg =
             getComputedStyle(document.documentElement).getPropertyValue("--primary-color").trim() || "#0F0F0F";
-        const servicesBg = "#FFF8F0";
-        // const servicesBg = "#1A1F2E";  // Dark slate blue
+        // const servicesBg = "#FFF8F0";
+        const servicesBg = "#1A1F2E";  // Dark slate blue
 
 
         const titleEl = el.querySelector(".title-main");
