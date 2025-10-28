@@ -6,7 +6,7 @@ import "./Projects.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Projects = () => {
+const Pro = () => {
     const sectionRef = useRef(null);
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
@@ -44,42 +44,6 @@ const Projects = () => {
     ];
 
     useEffect(() => {
-        const el = sectionRef.current;
-        if (!el) return;
-
-
-        const initialBg = getComputedStyle(document.documentElement).getPropertyValue("--primary-color").trim() || "#0F0F0F";
-        const projectsBg = "#1A1F2E";
-
-        const setBg = (color) => {
-            if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-                document.documentElement.style.setProperty("--primary-color", color);
-                return;
-            }
-            gsap.to(document.documentElement, {
-                "--primary-color": color,
-                duration: 0.3,
-                ease: "power2.inOut",
-            });
-        };
-
-        const bgScrollTrigger = ScrollTrigger.create({
-            trigger: el,
-            start: "top 0px",
-            end: "bottom 150px",
-            onEnter: () => setBg(projectsBg),
-            onEnterBack: () => setBg(projectsBg),
-            onLeave: () => setBg(initialBg),
-            onLeaveBack: () => setBg(projectsBg), 
-            invalidateOnRefresh: true,
-        });
-
-        ScrollTrigger.refresh();
-        if (bgScrollTrigger && bgScrollTrigger.isActive) {
-            setBg(projectsBg);
-        }
-
-
         const ctx = gsap.context(() => {
             gsap.from(titleRef.current, {
                 y: 50,
@@ -124,10 +88,7 @@ const Projects = () => {
             });
         }, sectionRef);
 
-        return () => {
-            ctx.revert();
-            bgScrollTrigger.kill();
-        };
+        return () => ctx.revert();
     }, []);
 
     return (
@@ -172,4 +133,4 @@ const Projects = () => {
     );
 };
 
-export default Projects;
+export default Pro;

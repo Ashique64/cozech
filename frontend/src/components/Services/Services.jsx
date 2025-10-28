@@ -165,7 +165,8 @@ const Services = () => {
             end: "80% 100px",
             onEnter: () => setBg(servicesBg),
             onEnterBack: () => setBg(servicesBg),
-            onLeave: () => setBg(initialBg),
+            // onLeave: () => setBg(initialBg),
+            onLeave: () => setBg(servicesBg),
             onLeaveBack: () => setBg(initialBg),
             invalidateOnRefresh: true,
         });
