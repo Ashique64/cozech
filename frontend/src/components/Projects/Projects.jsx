@@ -35,7 +35,7 @@ const Projects = () => {
             description:
                 "A clean, responsive website featuring a detailed product grid, clear price/review display, and essential trust elements like warranty and shipping for consumer confidence.",
             imageUrl: "/images/projects/project-3.webp",
-            link: "#",
+            link: "https://arc-nine-gamma.vercel.app/",
         },
         {
             id: 4,
