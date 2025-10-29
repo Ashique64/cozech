@@ -156,10 +156,10 @@ const Contact = () => {
         <section 
             ref={sectionRef}
             id="contact" 
-            className="contact w-full min-h-screen flex flex-col items-center justify-center md:p-20"
+            className="contact w-full min-h-screen flex flex-col items-center justify-center md:px-20 py-10 md:py-20"
         >
-            <div className="contact-container flex flex-col md:gap-16 justify-center items-center max-w-[1280px] w-full mx-auto px-4">
-                <div className="title-section text-center md:gap-5 flex flex-col">
+            <div className="contact-container flex flex-col gap-8 md:gap-16 justify-center items-center max-w-[1280px] w-full mx-auto px-3">
+                <div className="title-section text-center gap-3 md:gap-5 flex flex-col">
                     <h2 
                         ref={titleRef}
                         className="title font-semibold" 
@@ -175,13 +175,13 @@ const Contact = () => {
                     </p>
                 </div>
 
-                <div className="form-section flex flex-col md:flex-row md:gap-10 w-full">
+                <div className="form-section flex flex-col items-center lg:flex-row gap-10 lg:gap-10 w-full">
                     <div 
                         ref={contactDetailsRef}
-                        className="contact-details flex flex-col gap-8 w-full md:w-2/5"
+                        className="contact-details flex flex-col gap-5 lg:gap-8 w-full lg:w-2/5"
                     >
                         {contactItems.map(({ id, label, icon, text, link }) => (
-                            <div className="contact-item flex flex-col gap-4" key={id}>
+                            <div className="contact-item flex flex-col gap-2 lg:gap-4" key={id}>
                                 <div className="heading">{label}</div>
                                 <div className="details flex justify-between items-center">
                                     <div className="content flex items-center gap-2">
@@ -198,10 +198,10 @@ const Contact = () => {
 
                     <div 
                         ref={formDetailsRef}
-                        className="form-details md:w-3/5 flex flex-col gap-6"
+                        className="form-details w-full lg:w-3/5 flex flex-col items-center gap-4 lg:gap-6"
                     >
-                        <div className="form-items flex flex-col gap-12 w-full">
-                            <div className="items flex items-center md:gap-12 w-full">
+                        <div className="form-items flex flex-col gap-7 md:gap-10 lg:gap-12 w-full">
+                            <div className="items flex flex-col md:flex-row items-center gap-6 md:gap-12 w-full">
                                 <div
                                     className={`item flex flex-col gap-2 w-full ${
                                         formState.name.focused || formState.name.value ? "active" : ""
@@ -233,7 +233,7 @@ const Contact = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="items flex items-center md:gap-12 w-full">
+                            <div className="items flex flex-col md:flex-row items-center gap-6 md:gap-12 w-full">
                                 <div
                                     className={`item flex flex-col gap-2 w-full ${
                                         formState.phone.focused || formState.phone.value ? "active" : ""
