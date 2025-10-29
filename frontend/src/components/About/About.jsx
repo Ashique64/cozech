@@ -115,7 +115,7 @@ const About = () => {
                 <div className="about-items-section grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-20 w-full">
                     {aboutItems.map((item, index) => (
                         <div className="item-wrapper" key={item.id} ref={(el) => (itemsRef.current[index] = el)}>
-                            <div className="item flex items-center gap-6 md:gap-10">
+                            <div className="item flex items-center gap-5 md:gap-10">
                                 <div className="number">
                                     <h2 data-text={String(index + 1).padStart(2, "0")}>
                                         {String(index + 1).padStart(2, "0")}
