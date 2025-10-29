@@ -70,7 +70,7 @@ const Projects = () => {
         const bgScrollTrigger = ScrollTrigger.create({
             trigger: el,
             start: "top 0px",
-            end: "bottom 150px",
+            end: "90% center",
             onEnter: () => setBg(projectsBg),
             onEnterBack: () => setBg(projectsBg),
             onLeave: () => setBg(initialBg),
