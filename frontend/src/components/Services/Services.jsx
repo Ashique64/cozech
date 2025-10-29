@@ -219,9 +219,9 @@ const Services = () => {
         <section
             ref={sectionRef}
             id="services"
-            className="services w-full min-h-screen flex flex-col items-center justify-center md:p-20"
+            className="services w-full min-h-screen flex flex-col items-center justify-center md:px-20 py-10 md:py-20"
         >
-            <div className="service-container flex flex-col gap-20 justify-center items-center max-w-[1280px] w-full mx-auto px-4">
+            <div className="service-container flex flex-col gap-20 justify-center items-center max-w-[1280px] w-full mx-auto px-3">
                 <div className="title-section flex flex-col md:gap-4 text-center">
                     <h2 ref={titleRef} className="title font-semibold">
                         <span className="title-main">Design. Develop.</span> <span className="title-accent">Deliver.</span>
@@ -232,12 +232,12 @@ const Services = () => {
                     </p>
                 </div>
                 <div className="card-section flex justify-center items-stretch gap-6 flex-wrap w-full">
-                    <div className="card-wrapper w-full grid grid-cols-1 md:grid-cols-3">
+                    <div className="card-wrapper w-full grid grid-cols-1 lg:grid-cols-3">
                         {servicesData.map((service, index) => (
                             <div
                                 key={service.id}
                                 ref={(el) => (cardsRef.current[index] = el)}
-                                className="card flex justify-between min-h-[360px] md:border-r border-[#72727256] last:border-r-0"
+                                className="card flex justify-between min-h-[360px] lg:border-r border-[#72727256] last:border-r-0"
                             >
                                 <div className="card-overlay"></div>
                                 <div className="items-wrapper flex flex-col justify-center items-center gap-10 h-full p-5">
@@ -245,7 +245,7 @@ const Services = () => {
                                         <img src="/images/services/card-layer.png" alt="" />
                                         <div className="icon">{service.icon}</div>
                                     </div>
-                                    <div className="item-2 flex flex-col justify-start items-center text-center gap-4 min-h-[200px]">
+                                    <div className="item-2 flex flex-col justify-start items-center text-center gap-4 min-h-[150px] md:min-h-[200px]">
                                         <h3 className="card-title font-semibold">{service.title}</h3>
                                         <p className="card-description">{service.description}</p>
                                     </div>

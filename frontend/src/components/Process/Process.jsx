@@ -114,7 +114,7 @@ const Process = () => {
         <section
             ref={sectionRef}
             id="process"
-            className="process w-full min-h-screen flex items-center justify-center md:px-20 py-10 md:py-20 border"
+            className="process w-full min-h-screen flex items-center justify-center md:px-20 py-10 md:py-20"
         >
             <div className="process-container flex flex-col gap-5 md:gap-10 justify-center items-center max-w-[1280px] w-full mx-auto px-3">
                 <div className="title-section text-center">
