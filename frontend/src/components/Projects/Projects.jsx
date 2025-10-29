@@ -134,9 +134,9 @@ const Projects = () => {
         <section
             id="projects"
             ref={sectionRef}
-            className="projects w-full min-h-screen flex flex-col items-center justify-center md:p-20"
+            className="projects w-full min-h-screen flex flex-col items-center justify-center md:px-20 py-10 md:py-20"
         >
-            <div className="projects-container flex flex-col gap-20 justify-center items-center max-w-[1280px] w-full mx-auto px-4">
+            <div className="projects-container flex flex-col gap-20 justify-center items-center max-w-[1280px] w-full mx-auto px-3">
                 <div className="title-section flex flex-col md:gap-4 text-center">
                     <h2 ref={titleRef} className="title font-semibold" data-text="Crafted with Purpose">
                         Crafted with <span>Purpose</span>
@@ -146,14 +146,14 @@ const Projects = () => {
                     </p>
                 </div>
 
-                <div className="projects-item-section grid grid-cols-1 md:grid-cols-2 md:gap-10 w-full">
+                <div className="projects-item-section grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 w-full">
                     {projectsItems.map((item, index) => (
                         <div className="card-wrapper" key={index} ref={(el) => (cardsRef.current[index] = el)}>
-                            <div className="card overflow-hidden flex flex-col justify-between items-center md:gap-10">
+                            <div className="card grid grid-rows-[auto_1fr_auto] overflow-hidden items-start gap-5 lg:gap-10 h-full">
                                 <div className="image">
                                     <img src={item.imageUrl} alt={item.title} />
                                 </div>
-                                <div className="content flex flex-col items-start gap-5 w-full">
+                                <div className="content flex flex-col items-start gap-2 lg:gap-5 w-full">
                                     <h3 className="title">{item.title}</h3>
                                     <p className="description">{item.description}</p>
                                 </div>

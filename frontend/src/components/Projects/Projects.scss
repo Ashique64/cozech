@@ -208,3 +208,178 @@
         background-position: 0% 50%;
     }
 }
+
+@media (min-width: 769px) and (max-width: 998px) {
+    #projects {
+        padding: 60px 40px;
+
+        .projects-container {
+            .title-section {
+                padding: 0 clamp(24px, 5vw, 60px);
+
+                h2 {
+                    font-size: 36px;
+                    line-height: 140%;
+                }
+
+                p {
+                    font-size: clamp(15px, 1.8vw, 17px);
+                    margin-top: 12px;
+                }
+            }
+
+            .projects-item-section {
+                .card-wrapper {
+                    padding: 20px;
+                    border-radius: 18px;
+
+                    .card {
+                        .image {
+                            border-radius: 18px;
+
+                            img {
+                                height: 150px;
+                            }
+                        }
+
+                        .content {
+                            .title {
+                                font-size: clamp(20px, 2vw, 22px);
+                            }
+
+                            .description {
+                                font-size: clamp(14px, 1.4vw, 15px);
+                                line-height: 155%;
+                            }
+                        }
+
+                        .project-button {
+                            button {
+                                padding: clamp(14px, 1.3vw, 16px) clamp(20px, 1.8vw, 24px);
+                                font-size: clamp(14px, 1.3vw, 15px);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    #projects {
+        .projects-container {
+            .title-section {
+                padding: 0 clamp(20px, 4vw, 40px);
+
+                h2 {
+                    font-size: 32px;
+                    line-height: 135%;
+                }
+
+                p {
+                    font-size: clamp(14px, 2.2vw, 16px);
+                    margin-top: 10px;
+                    line-height: 160%;
+                }
+            }
+
+            .projects-item-section {
+                padding: 0 20px;
+
+                .card-wrapper {
+                    padding: 18px;
+                    border-radius: 16px;
+
+                    .card {
+                        .image {
+                            border-radius: 16px;
+
+                            img {
+                                height: 180px;
+                            }
+                        }
+
+                        .content {
+                            .title {
+                                font-size: clamp(18px, 2.5vw, 20px);
+                                line-height: 140%;
+                            }
+
+                            .description {
+                                font-size: clamp(13px, 1.8vw, 14px);
+                                line-height: 160%;
+                            }
+                        }
+
+                        .project-button {
+                            button {
+                                padding: clamp(12px, 1.2vw, 14px) clamp(18px, 1.7vw, 22px);
+                                font-size: clamp(13px, 1.3vw, 14px);
+                                border-radius: 50px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #projects {
+        .projects-container {
+            .title-section {
+                padding: 0 16px;
+
+                h2 {
+                    font-size: 28px;
+                    line-height: 130%;
+                }
+
+                p {
+                    font-size: clamp(13px, 3.5vw, 15px);
+                    margin-top: 8px;
+                    line-height: 165%;
+                }
+            }
+
+            .projects-item-section {
+                .card-wrapper {
+                    padding: 16px;
+                    border-radius: 14px;
+
+                    .card {
+                        .image {
+                            border-radius: 14px;
+
+                            img {
+                                height: 160px;
+                            }
+                        }
+
+                        .content {
+                            .title {
+                                font-size: clamp(16px, 4vw, 18px);
+                                line-height: 140%;
+                            }
+
+                            .description {
+                                font-size: clamp(12px, 3vw, 14px);
+                                line-height: 165%;
+                            }
+                        }
+
+                        .project-button {
+                            button {
+                                padding: clamp(10px, 2.5vw, 12px) clamp(16px, 4vw, 18px);
+                                font-size: clamp(12px, 3vw, 14px);
+                                border-radius: 48px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
