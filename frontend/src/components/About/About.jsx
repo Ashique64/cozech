@@ -82,11 +82,11 @@ const About = () => {
             itemsRef.current,
             {
                 opacity: 0,
-                x: -30,
+                y: 40,
             },
             {
                 opacity: 1,
-                x: 0,
+                y: 0,
                 duration: 0.8,
                 stagger: 0.15,
                 ease: "power2.out",
