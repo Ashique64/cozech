@@ -100,9 +100,9 @@ const About = () => {
         <section
             ref={containerRef}
             id="about"
-            className="about w-full min-h-screen flex flex-col items-center justify-center md:p-20"
+            className="about w-full min-h-screen flex flex-col items-center justify-center md:px-20 py-10 md:py-20"
         >
-            <div className="about-container flex flex-col md:gap-16 justify-center items-center max-w-[1280px] w-full mx-auto px-4">
+            <div className="about-container flex flex-col gap-8 md:gap-16 justify-center items-center max-w-[1280px] w-full mx-auto px-3">
                 <div className="title-section w-full flex flex-col md:gap-5 text-center">
                     <h2 ref={titleRef} className="title font-semibold" data-text="Why Choose COZECH">
                         Why Choose <span>COZECH</span>{" "}
@@ -112,10 +112,10 @@ const About = () => {
                     </p>
                 </div>
 
-                <div className="about-items-section grid grid-cols-1 md:grid-cols-2 md:gap-20 w-full">
+                <div className="about-items-section grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-20 w-full">
                     {aboutItems.map((item, index) => (
                         <div className="item-wrapper" key={item.id} ref={(el) => (itemsRef.current[index] = el)}>
-                            <div className="item flex items-center md:gap-10">
+                            <div className="item flex items-center gap-6 md:gap-10">
                                 <div className="number">
                                     <h2 data-text={String(index + 1).padStart(2, "0")}>
                                         {String(index + 1).padStart(2, "0")}

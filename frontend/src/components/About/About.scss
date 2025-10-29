@@ -184,10 +184,220 @@
     }
     60% {
         left: 110%;
-        opacity: 0.6; 
+        opacity: 0.6;
     }
     100% {
         left: 150%;
+        opacity: 0;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 998px) {
+    #about {
+        padding: 60px 40px;
+
+        .about-container {
+            .title-section {
+                padding: 0 clamp(24px, 5vw, 60px);
+
+                h2 {
+                    font-size: 36px;
+                    line-height: 140%;
+                }
+
+                p {
+                    font-size: clamp(15px, 1.8vw, 17px);
+                    margin-top: 12px;
+                }
+            }
+
+            .about-items-section {
+                .item-wrapper {
+                    .item {
+                        .number {
+                            h2 {
+                                font-size: clamp(64px, 6vw, 76px);
+                            }
+                        }
+
+                        .title {
+                            h4 {
+                                font-size: clamp(18px, 2.2vw, 22px);
+                            }
+                        }
+                    }
+
+                    &:nth-child(2),
+                    &:nth-child(4) {
+                        .item {
+                            justify-content: end;
+                            text-align: right;
+                            flex-direction: row-reverse;
+
+                            &::before {
+                                left: auto;
+                                right: -30%;
+                            }
+
+                            &:hover {
+                                &::before {
+                                    animation: shineSweepReverse 1.2s ease-in-out 0s 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    #about {
+        .about-container {
+            .title-section {
+                padding: 0 clamp(20px, 4vw, 40px);
+
+                h2 {
+                    font-size: 32px;
+                    line-height: 135%;
+                }
+
+                p {
+                    font-size: clamp(14px, 2.2vw, 16px);
+                    margin-top: 10px;
+                    line-height: 160%;
+                }
+            }
+
+            .about-items-section {
+                padding: 0 20px;
+
+                .item-wrapper {
+                    .item {
+                        border-bottom: 1px solid rgba(101, 100, 100, 0.31);
+                        &::before {
+                            left: -50%;
+                        }
+
+                        .number {
+                            h2 {
+                                font-size: clamp(56px, 8vw, 64px);
+                                line-height: 130%;
+                            }
+                        }
+
+                        .title {
+                            h4 {
+                                font-size: clamp(16px, 2.8vw, 20px);
+                                line-height: 140%;
+                            }
+                        }
+                    }
+                    &:nth-child(2),
+                    &:nth-child(4) {
+                        .item {
+                            justify-content: end;
+                            text-align: right;
+                            flex-direction: row-reverse;
+
+                            &::before {
+                                left: auto;
+                                right: -30%;
+                            }
+
+                            &:hover {
+                                &::before {
+                                    animation: shineSweepReverse 1.2s ease-in-out 0s 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #about {
+        .about-container {
+            .title-section {
+                padding: 0 16px;
+
+                h2 {
+                    font-size: 28px;
+                    line-height: 130%;
+                }
+
+                p {
+                    font-size: clamp(13px, 3.5vw, 15px);
+                    margin-top: 8px;
+                    line-height: 165%;
+                }
+            }
+
+            .about-items-section {
+                .item-wrapper {
+                    .item {
+                        border-bottom: 1px solid rgba(101, 100, 100, 0.31);
+                        &::before {
+                            left: -50%;
+                        }
+
+                        .number {
+                            h2 {
+                                font-size: clamp(48px, 12vw, 56px);
+                                line-height: 120%;
+                            }
+                        }
+
+                        .title {
+                            h4 {
+                                font-size: clamp(15px, 4vw, 18px);
+                                line-height: 140%;
+                            }
+                        }
+                    }
+                    &:nth-child(2),
+                    &:nth-child(4) {
+                        .item {
+                            justify-content: end;
+                            text-align: right;
+                            flex-direction: row-reverse;
+
+                            &::before {
+                                left: auto;
+                                right: -30%;
+                            }
+
+                            &:hover {
+                                &::before {
+                                    animation: shineSweepReverse 1.2s ease-in-out 0s 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes shineSweepReverse {
+    0% {
+        right: -30%;
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.6;
+    }
+    60% {
+        right: 110%;
+        opacity: 0.6;
+    }
+    100% {
+        right: 150%;
         opacity: 0;
     }
 }
