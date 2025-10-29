@@ -294,25 +294,25 @@
                             }
                         }
                     }
-                    &:nth-child(2),
-                    &:nth-child(4) {
-                        .item {
-                            justify-content: end;
-                            text-align: right;
-                            flex-direction: row-reverse;
+                    // &:nth-child(2),
+                    // &:nth-child(4) {
+                    //     .item {
+                    //         justify-content: end;
+                    //         text-align: right;
+                    //         flex-direction: row-reverse;
 
-                            &::before {
-                                left: auto;
-                                right: -30%;
-                            }
+                    //         &::before {
+                    //             left: auto;
+                    //             right: -30%;
+                    //         }
 
-                            &:hover {
-                                &::before {
-                                    animation: shineSweepReverse 1.2s ease-in-out 0s 1;
-                                }
-                            }
-                        }
-                    }
+                    //         &:hover {
+                    //             &::before {
+                    //                 animation: shineSweepReverse 1.2s ease-in-out 0s 1;
+                    //             }
+                    //         }
+                    //     }
+                    // }
                 }
             }
         }
@@ -359,25 +359,25 @@
                             }
                         }
                     }
-                    &:nth-child(2),
-                    &:nth-child(4) {
-                        .item {
-                            justify-content: end;
-                            text-align: right;
-                            flex-direction: row-reverse;
+                    // &:nth-child(2),
+                    // &:nth-child(4) {
+                    //     .item {
+                    //         justify-content: end;
+                    //         text-align: right;
+                    //         flex-direction: row-reverse;
 
-                            &::before {
-                                left: auto;
-                                right: -30%;
-                            }
+                    //         &::before {
+                    //             left: auto;
+                    //             right: -30%;
+                    //         }
 
-                            &:hover {
-                                &::before {
-                                    animation: shineSweepReverse 1.2s ease-in-out 0s 1;
-                                }
-                            }
-                        }
-                    }
+                    //         &:hover {
+                    //             &::before {
+                    //                 animation: shineSweepReverse 1.2s ease-in-out 0s 1;
+                    //             }
+                    //         }
+                    //     }
+                    // }
                 }
             }
         }
