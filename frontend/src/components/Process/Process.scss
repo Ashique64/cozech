@@ -297,3 +297,225 @@
         background-position: 0% 50%;
     }
 }
+
+@media (min-width: 768px) and (max-width: 998px) {
+    #process {
+        padding: 60px 40px;
+        .process-container {
+            .title-section {
+                padding: 0 clamp(24px, 5vw, 60px);
+
+                h2 {
+                    font-size: 36px;
+                    line-height: 140%;
+                }
+
+                p {
+                    font-size: clamp(15px, 1.8vw, 17px);
+                    margin-top: 12px;
+                }
+            }
+
+            .card-section {
+                .card-wrapper {
+                    .card {
+                        border-radius: 14px;
+                        padding: 18px;
+
+                        &::before,
+                        &::after {
+                            border-radius: 14px;
+                        }
+
+                        .item-1 {
+                            padding: 32px;
+
+                            .logo {
+                                width: 85px;
+                                height: 85px;
+                            }
+                        }
+
+                        .item-2 {
+                            h3 {
+                                font-size: clamp(19px, 2vw, 22px);
+                            }
+
+                            p {
+                                font-size: clamp(13px, 1.4vw, 15px);
+                            }
+                        }
+
+                        &:hover {
+                            transform: translateY(-8px) scale(1.015);
+                        }
+                    }
+                }
+            }
+
+            .button-section {
+                button {
+                    padding: 14px 22px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+    #process {
+        .process-container {
+            .title-section {
+                padding: 0 clamp(20px, 4vw, 40px);
+
+                h2 {
+                    font-size: 32px;
+                    line-height: 135%;
+                }
+
+                p {
+                    font-size: clamp(14px, 2.2vw, 16px);
+                    margin-top: 10px;
+                    line-height: 160%;
+                }
+            }
+
+            .card-section {
+                .card-wrapper {
+                    .card {
+                        border-radius: 12px;
+                        padding: 16px;
+
+                        &::before,
+                        &::after {
+                            border-radius: 12px;
+                        }
+
+                        .item-1 {
+                            padding: 24px;
+
+                            .logo {
+                                width: 75px;
+                                height: 75px;
+                            }
+                        }
+
+                        .item-2 {
+                            h3 {
+                                font-size: clamp(17px, 2.5vw, 20px);
+                            }
+
+                            p {
+                                font-size: clamp(13px, 1.8vw, 14px);
+                                line-height: 155%;
+                            }
+                        }
+
+                        &:hover {
+                            transform: translateY(-6px) scale(1.01);
+
+                            .item-1 {
+                                .logo {
+                                    transform: scale(1.08) rotateY(180deg);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .button-section {
+                button {
+                    padding: 13px 20px;
+                    font-size: 14px;
+                    border-radius: 60px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #process {
+        .process-container {
+            .title-section {
+                padding: 0 16px;
+
+                h2 {
+                    font-size: 28px;
+                    line-height: 130%;
+                }
+
+                p {
+                    font-size: clamp(13px, 3.5vw, 15px);
+                    margin-top: 8px;
+                    line-height: 165%;
+                    padding: 0 8px;
+                }
+            }
+
+            .card-section {
+                padding: 0 16px;
+
+                .card-wrapper {
+                    .card {
+                        border-radius: 12px;
+                        padding: 14px;
+
+                        &::before,
+                        &::after {
+                            border-radius: 12px;
+                        }
+
+                        .item-1 {
+                            padding: 20px;
+
+                            .logo {
+                                width: 65px;
+                                height: 65px;
+                            }
+                        }
+
+                        .item-2 {
+                            h3 {
+                                font-size: clamp(16px, 4vw, 18px);
+                                line-height: 140%;
+                            }
+
+                            p {
+                                font-size: clamp(12px, 3vw, 14px);
+                                line-height: 160%;
+                            }
+                        }
+
+                        &:hover {
+                            transform: translateY(-4px) scale(1.005);
+
+                            .item-1 {
+                                .logo {
+                                    transform: scale(1.05) rotateY(180deg);
+                                    filter: drop-shadow(0 3px 10px rgba(255, 213, 0, 0.25));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .button-section {
+                padding: 0 16px;
+
+                button {
+                    width: 100%;
+                    max-width: 280px;
+                    padding: 14px 20px;
+                    font-size: 14px;
+                    border-radius: 50px;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
