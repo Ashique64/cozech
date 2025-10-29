@@ -29,9 +29,9 @@ const Footer = () => {
                 <div className="copy-rights flex justify-start items-center">
                     <p>@2025 COZECH. All Rights Reserved.</p>
                 </div>
-                <div className="version">
+                {/* <div className="version">
                     <p>Version 1.0</p>
-                </div>
+                </div> */}
                 <div className="navigations flex justify-between gap-5 items-center">
                     <a href="">Privacy Policy</a>
                     <a href="">Terms & Conditions</a>
