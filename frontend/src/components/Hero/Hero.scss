@@ -50,6 +50,7 @@
             }
 
             .cta-section {
+                opacity: 0;
                 button {
                     border-radius: 56px;
                     padding: clamp(12px, 1.1vw, 16px) clamp(18px, 1.6vw, 24px);

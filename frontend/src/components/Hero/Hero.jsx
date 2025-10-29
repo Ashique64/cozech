@@ -73,46 +73,8 @@ const Hero = () => {
         }
 
         if (ctaRef.current) {
-            const button = ctaRef.current.querySelector("button");
-            const linkElement = ctaRef.current.querySelector("a");
-
-            if (linkElement) {
-                linkElement.style.transition = "none";
-                linkElement.classList.remove("transition");
-            }
-
-            if (button) gsap.set(button, { opacity: 0, y: 20, force3D: true });
-            if (linkElement) gsap.set(linkElement, { opacity: 0, y: 20, force3D: true });
-
-            masterTl.to(
-                button,
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.6,
-                    ease: "power2.out",
-                    force3D: true,
-                },
-                ">"
-            );
-
-            masterTl.to(
-                linkElement,
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.6,
-                    ease: "power2.out",
-                    force3D: true,
-                    onComplete: () => {
-                        if (linkElement) {
-                            linkElement.style.transition = "";
-                            linkElement.classList.add("transition");
-                        }
-                    },
-                },
-                ">"
-            );
+            gsap.set(ctaRef.current, { opacity: 0, y: 18 });
+            masterTl.to(ctaRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, ">-=0.4");
         }
 
         const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.5, defaults: { ease: "power2.inOut" } });
@@ -195,10 +157,10 @@ const Hero = () => {
                     </div>
 
                     <div ref={ctaRef} className="cta-section flex flex-col justify-center items-center gap-4">
-                        <button onClick={handleWhatsAppClick}>
+                        <button className="hero-btn" onClick={handleWhatsAppClick}>
                             <span>Book a Call</span>
                         </button>
-                        <Link smooth to="/#process" className="transition">
+                        <Link smooth to="/#process" className="hero-link transition">
                             Too soon? <span>Keep scrolling</span>
                         </Link>
                     </div>
