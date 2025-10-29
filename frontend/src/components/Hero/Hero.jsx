@@ -81,17 +81,8 @@ const Hero = () => {
                 linkElement.classList.remove("transition");
             }
 
-            gsap.set(button, {
-                opacity: 0,
-                y: 20,
-                force3D: true,
-            });
-
-            gsap.set(linkElement, {
-                opacity: 0,
-                y: 20,
-                force3D: true,
-            });
+            if (button) gsap.set(button, { opacity: 0, y: 20, force3D: true });
+            if (linkElement) gsap.set(linkElement, { opacity: 0, y: 20, force3D: true });
 
             masterTl.to(
                 button,
@@ -102,7 +93,7 @@ const Hero = () => {
                     ease: "power2.out",
                     force3D: true,
                 },
-                ">-=0.2"
+                ">"
             );
 
             masterTl.to(
@@ -120,7 +111,7 @@ const Hero = () => {
                         }
                     },
                 },
-                ">-=0.4"
+                ">"
             );
         }
 
