@@ -126,7 +126,7 @@ const CTA = () => {
                 </div>
                 <div className="image-section w-full">
                     <img
-                        src="/images/CTA/cta-image.png"
+                        src="/images/CTA/cta-image.webp"
                         alt="Decorative"
                         ref={bottomImageRef}
                         className="cta-bottom-image"

@@ -18,28 +18,28 @@ const Projects = () => {
             title: "The Full-Service Fitness Hub",
             description:
                 "A visually compelling, responsive website built to showcase a diverse range of programs—from Personal Training and Body Building to Ladies-Only hours.",
-            imageUrl: "/images/projects/project-1.png",
+            imageUrl: "/images/projects/project-1.webp",
         },
         {
             id: 2,
             title: "Expert German Education Counseling",
             description:
                 "Developed a robust informational website detailing the end-to-end support for studying in Germany, showcasing services from Course Selection and Visa Processing to Settlement Support.",
-            imageUrl: "/images/projects/project-2.png",
+            imageUrl: "/images/projects/project-2.webp",
         },
         {
             id: 3,
             title: "Modern E-commerce Showcase",
             description:
                 "A clean, responsive website featuring a detailed product grid, clear price/review display, and essential trust elements like warranty and shipping for consumer confidence.",
-            imageUrl: "/images/projects/project-3.png",
+            imageUrl: "/images/projects/project-3.webp",
         },
         {
             id: 4,
             title: "The Trusted Traveler's Choice",
             description:
                 "A user-friendly digital presence reflecting the brand's commitment to spotless accommodations and warm service, designed to be the definitive booking source for travelers.",
-            imageUrl: "/images/projects/project-4.png",
+            imageUrl: "/images/projects/project-4.webp",
         },
     ];
 
