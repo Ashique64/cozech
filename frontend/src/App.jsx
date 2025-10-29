@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import Navbar from "./components/Navbar/Navbar";
-import Loader from "./components/Loader";
+import Loader from "./components/Loader/Loader";
 import "./App.css";
 
 const Hero = React.lazy(() => import("./components/Hero/Hero"));
