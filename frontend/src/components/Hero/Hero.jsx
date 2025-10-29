@@ -8,7 +8,7 @@ import "./Hero.scss";
 gsap.registerPlugin(SplitText);
 
 const Hero = () => {
-    const rotatingWords = ["Solutions","Websites", "Apps", "Designs", "Brands"];
+    const rotatingWords = ["Solutions", "Websites", "Apps", "Designs", "Brands"];
 
     const rotatingRef = useRef(null);
     const containerRef = useRef(null);
@@ -177,7 +177,7 @@ const Hero = () => {
                 ref={containerRef}
                 className="container relative z-10 max-w-[1280px] w-full mx-auto px-4 h-full flex items-center justify-center"
             >
-                <div className="section-wrapper w-full h-full pt-36 px-10 flex flex-col items-center justify-center gap-14">
+                <div className="section-wrapper w-full h-full md:pt-36 px-2 flex flex-col items-center justify-center gap-10 md:gap-14">
                     <div className="title-section flex flex-col justify-center items-center gap-4 w-full">
                         <h1 ref={mainTitleRef} className="main-title">
                             We build
@@ -185,8 +185,14 @@ const Hero = () => {
                         <h1 ref={rotatingRef} className="rotating-word" aria-live="polite" />
 
                         <p ref={descRef}>
-                            We craft seamless, high-performing digital experiences that elevate brands and drive meaningful
-                            engagement.
+                            <span className="hidden md:block full-desc">
+                                We craft seamless, high-performing digital experiences that elevate brands and drive
+                                meaningful engagement. Book a free consultation to discover how we can accelerate your
+                                digital growth.
+                            </span>
+                            <span className="block md:hidden short-desc">
+                                High-performing digital experiences that elevate your brand. Book a free consultation today.
+                            </span>
                         </p>
                     </div>
 
