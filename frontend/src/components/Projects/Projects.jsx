@@ -19,6 +19,7 @@ const Projects = () => {
             description:
                 "A visually compelling, responsive website built to showcase a diverse range of programs—from Personal Training and Body Building to Ladies-Only hours.",
             imageUrl: "/images/projects/project-1.webp",
+            link: "https://repsking.in/",
         },
         {
             id: 2,
@@ -26,6 +27,7 @@ const Projects = () => {
             description:
                 "Developed a robust informational website detailing the end-to-end support for studying in Germany, showcasing services from Course Selection and Visa Processing to Settlement Support.",
             imageUrl: "/images/projects/project-2.webp",
+            link: "https://edu-fam-7nhr.vercel.app/",
         },
         {
             id: 3,
@@ -33,6 +35,7 @@ const Projects = () => {
             description:
                 "A clean, responsive website featuring a detailed product grid, clear price/review display, and essential trust elements like warranty and shipping for consumer confidence.",
             imageUrl: "/images/projects/project-3.webp",
+            link: "#",
         },
         {
             id: 4,
@@ -40,6 +43,7 @@ const Projects = () => {
             description:
                 "A user-friendly digital presence reflecting the brand's commitment to spotless accommodations and warm service, designed to be the definitive booking source for travelers.",
             imageUrl: "/images/projects/project-4.webp",
+            link: "https://hotelvarahigrand.com/",
         },
     ];
 
@@ -47,8 +51,8 @@ const Projects = () => {
         const el = sectionRef.current;
         if (!el) return;
 
-
-        const initialBg = getComputedStyle(document.documentElement).getPropertyValue("--primary-color").trim() || "#0F0F0F";
+        const initialBg =
+            getComputedStyle(document.documentElement).getPropertyValue("--primary-color").trim() || "#0F0F0F";
         const projectsBg = "#1A1F2E";
 
         const setBg = (color) => {
@@ -70,7 +74,7 @@ const Projects = () => {
             onEnter: () => setBg(projectsBg),
             onEnterBack: () => setBg(projectsBg),
             onLeave: () => setBg(initialBg),
-            onLeaveBack: () => setBg(projectsBg), 
+            onLeaveBack: () => setBg(projectsBg),
             invalidateOnRefresh: true,
         });
 
@@ -78,7 +82,6 @@ const Projects = () => {
         if (bgScrollTrigger && bgScrollTrigger.isActive) {
             setBg(projectsBg);
         }
-
 
         const ctx = gsap.context(() => {
             gsap.from(titleRef.current, {
@@ -158,11 +161,16 @@ const Projects = () => {
                                     <p className="description">{item.description}</p>
                                 </div>
 
-                                <Link className="project-button w-full flex justify-start">
+                                <a
+                                    href={item.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="project-button w-full flex justify-start"
+                                >
                                     <button>
                                         <span>view project</span>
                                     </button>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     ))}

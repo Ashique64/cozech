@@ -155,6 +155,13 @@ const Hero = () => {
         };
     }, []);
 
+    const handleWhatsAppClick = () => {
+        const phoneNumber = "918593978298";
+        const message = "Hi! I'd like to book a call.";
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, "_blank");
+    };
+
     return (
         <section id="home" className="home relative w-full h-screen flex items-center justify-center overflow-hidden">
             <video
@@ -197,7 +204,7 @@ const Hero = () => {
                     </div>
 
                     <div ref={ctaRef} className="cta-section flex flex-col justify-center items-center gap-4">
-                        <button>
+                        <button onClick={handleWhatsAppClick}>
                             <span>Book a Call</span>
                         </button>
                         <Link smooth to="/#process" className="transition">

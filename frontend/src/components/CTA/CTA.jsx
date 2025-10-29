@@ -95,6 +95,24 @@ const CTA = () => {
             "-=0.4"
         );
     });
+
+    const scrollToContact = () => {
+        const contactSection = document.getElementById("contact");
+        if (contactSection) {
+            contactSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+        }
+    };
+
+    const openWhatsApp = () => {
+        const phoneNumber = "918593978298";
+        const message = "Hi! I'd like to book a call.";
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    };
+
     return (
         <section
             ref={sectionRef}
@@ -115,10 +133,20 @@ const CTA = () => {
                     </div>
                     <div className="button-section flex flex-col items-center gap-4">
                         <div className="buttons flex gap-4">
-                            <button ref={(el) => (buttonsRef.current[0] = el)} type="button" className="btn1">
+                            <button
+                                ref={(el) => (buttonsRef.current[0] = el)}
+                                type="button"
+                                onClick={scrollToContact}
+                                className="btn1"
+                            >
                                 <span>Get Started</span>
                             </button>
-                            <button ref={(el) => (buttonsRef.current[1] = el)} type="button" className="btn2">
+                            <button
+                                ref={(el) => (buttonsRef.current[1] = el)}
+                                type="button"
+                                onClick={openWhatsApp}
+                                className="btn2"
+                            >
                                 <span>Book a Call</span>
                             </button>
                         </div>
