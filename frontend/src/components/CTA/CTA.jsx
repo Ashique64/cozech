@@ -99,13 +99,13 @@ const CTA = () => {
         <section
             ref={sectionRef}
             id="cta"
-            className="cta w-full min-h-screen flex flex-col items-center justify-center md:p-20"
+            className="cta w-full lg:min-h-screen flex flex-col items-center justify-center md:px-20 py-10 md:py-20"
         >
-            <div className="cta-container flex flex-col md:gap-6 justify-center items-center max-w-[1280px] w-full mx-auto px-4 ">
+            <div className="cta-container flex flex-col md:gap-6 justify-center items-center max-w-[1280px] w-full mx-auto px-3 ">
                 <img src="/images/CTA/svg/svgImage-1.svg" alt="Icon" className="left absolute top-0 left-0" />
                 <img src="/images/CTA/svg/svgImage-2.svg" alt="Icon" className="right absolute top-0 right-0" />
-                <div className="title-section w-full flex flex-col md:gap-12 p-4">
-                    <div className="text-section flex flex-col gap-4 text-center ">
+                <div className="title-section w-full flex flex-col gap-8 md:gap-12 p-4">
+                    <div className="text-section flex flex-col gap-2 md:gap-4 text-center ">
                         <h2 ref={titleRef} className="title font-semibold" data-text="Ready to Create What’s Next?">
                             Ready to Create What’s Next?
                         </h2>
@@ -114,7 +114,7 @@ const CTA = () => {
                         </p>
                     </div>
                     <div className="button-section flex flex-col items-center gap-4">
-                        <div className="buttons flex gap-2">
+                        <div className="buttons flex gap-4">
                             <button ref={(el) => (buttonsRef.current[0] = el)} type="button" className="btn1">
                                 <span>Get Started</span>
                             </button>
