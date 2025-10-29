@@ -1,7 +1,6 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
-
 
 const Hero = React.lazy(() => import("./components/Hero/Hero"));
 const Process = React.lazy(() => import("./components/Process/Process"));
@@ -14,29 +13,60 @@ const Footer = React.lazy(() => import("./components/Footer/Footer"));
 
 function Loader() {
     return (
-        <div className="flex items-center justify-center min-h-screen">
-            <div className="flex flex-col items-center gap-4">
-                <div className="w-16 h-16 border-4 border-gray-200 border-t-[#666666] rounded-full animate-spin"></div>
-                <p className="text-gray-600 font-medium">Loading...</p>
+        <div className="loader-overlay">
+            <div className="loader-content">
+                <div className="loader-spinner"></div>
+                <p className="loader-text">Loading...</p>
             </div>
         </div>
     );
 }
 
 function App() {
+    const [isLoading, setIsLoading] = useState(true);
+    const [contentLoaded, setContentLoaded] = useState(false);
+
+    useEffect(() => {
+        // Wait for content to be mounted and painted
+        if (contentLoaded) {
+            // Small delay to ensure layout is stable
+            const timer = setTimeout(() => {
+                setIsLoading(false);
+            }, 100);
+            return () => clearTimeout(timer);
+        }
+    }, [contentLoaded]);
+
     return (
-        <Suspense fallback={<Loader />}>
-            <Navbar />
-            <Hero />
-            <Process />
-            <Services />
-            <Projects />
-            <About />
-            <CTA />
-            <Contact />
-            <Footer />
-        </Suspense>
+        <>
+            {isLoading && <Loader />}
+            <div className={isLoading ? "content-hidden" : "content-visible"}>
+                <Suspense fallback={null}>
+                    <Navbar />
+                    <Hero />
+                    <Process />
+                    <Services />
+                    <Projects />
+                    <About />
+                    <CTA />
+                    <Contact />
+                    <Footer />
+                    <ContentLoadedSignal onLoad={() => setContentLoaded(true)} />
+                </Suspense>
+            </div>
+        </>
     );
+}
+
+function ContentLoadedSignal({ onLoad }) {
+    useEffect(() => {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                onLoad();
+            });
+        });
+    }, [onLoad]);
+    return null;
 }
 
 export default App;
