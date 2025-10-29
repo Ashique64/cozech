@@ -98,11 +98,11 @@ const Contact = () => {
             contactDetailsRef.current,
             {
                 opacity: 0,
-                x: -30,
+                y: 50,
             },
             {
                 opacity: 1,
-                x: 0,
+                y: 0,
                 duration: 1,
                 ease: "power2.out",
             },
