@@ -1,0 +1,65 @@
+:root {
+    --primary-color: #0f0f0f; /* provided */
+    --secondary-color: #ffffff; /* provided */
+    --ternary-color: #666666; /* provided for descriptions */
+    --light-white: #f5f5f5e2;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --muted-bg: rgba(255, 255, 255, 0.02);
+}
+
+.pricing-policy {
+    background: var(--primary-color);
+    color: var(--ternary-color);
+    min-height: 100vh;
+}
+
+
+.policy-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.heading,
+.section-title {
+    color: var(--secondary-color);
+}
+
+
+.subheading {
+    color: var(--light-white);
+    opacity: 0.9;
+}
+
+
+.description,
+.milestone-trigger,
+.tiny-note {
+    color: var(--ternary-color);
+}
+
+
+.milestone {
+    background: var(--muted-bg);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.milestone-title {
+    color: var(--light-white);
+    opacity: 0.95;
+}
+
+.milestone-percent {
+    color: var(--light-white);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.85rem;
+}
+
+/* responsive tweaks */
+@media (min-width: 768px) {
+    .pricing-policy {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}

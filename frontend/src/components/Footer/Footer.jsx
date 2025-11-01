@@ -12,13 +12,13 @@ const Footer = () => {
                 <div className="social-media flex items-center gap-5 p-5">
                     <h6>Follow Us On Social Media</h6>
                     <div className="icons flex items-center gap-4">
-                        <a href="">
+                        <a href="https://www.linkedin.com/company/cozech/" target="_blank">
                             <img src="/images/socialMedia/svg/LinkedIn.svg" alt="LinkedIn" />
                         </a>
-                        <a href="">
+                        <a href="https://www.instagram.com/team.cozech?igsh=bHM2dmpncXB1MG5zZjA=" target="_blank">
                             <img src="/images/socialMedia/svg/Instagram.svg" alt="Instagram" />
                         </a>
-                        <a href="">
+                        <a href="#home">
                             <img src="/images/socialMedia/svg/Twitter.svg" alt="Twitter" />
                         </a>
                         

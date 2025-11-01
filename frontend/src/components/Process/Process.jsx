@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
+import { Link } from "react-router-dom";
 import "./Process.scss";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -155,27 +156,29 @@ const Process = () => {
                 </div>
 
                 <div className="button-section">
-                    <button>
-                        <span className="button-text">view our pricing policy</span>
-                        <span className="arrow-icon">
-                            <i>
-                                <svg
-                                    width="14"
-                                    height="12"
-                                    viewBox="0 0 14 12"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        clipRule="evenodd"
-                                        d="M0.333374 5.9999C0.333374 5.42 0.790044 4.9499 1.35337 4.9499H10.3809L7.4464 2.20678C7.04034 1.80484 7.02767 1.14015 7.41812 0.722139C7.80857 0.304129 8.45428 0.291096 8.86034 0.693029L13.6203 5.24303C13.8203 5.44099 13.9334 5.71428 13.9334 5.9999C13.9334 6.28552 13.8203 6.55881 13.6203 6.75678L8.86034 11.3068C8.45428 11.7087 7.80857 11.6957 7.41812 11.2777C7.02767 10.8597 7.04034 10.195 7.4464 9.79303L10.3809 7.0499H1.35337C0.790044 7.0499 0.333374 6.5798 0.333374 5.9999Z"
-                                        fill="white"
-                                    />
-                                </svg>
-                            </i>
-                        </span>
-                    </button>
+                    <Link to="/pricing-policy" onClick={() => window.scrollTo({ top: 0, behavior: "auto" })}>
+                        <button>
+                            <span className="button-text">view our pricing policy</span>
+                            <span className="arrow-icon">
+                                <i>
+                                    <svg
+                                        width="14"
+                                        height="12"
+                                        viewBox="0 0 14 12"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            fillRule="evenodd"
+                                            clipRule="evenodd"
+                                            d="M0.333374 5.9999C0.333374 5.42 0.790044 4.9499 1.35337 4.9499H10.3809L7.4464 2.20678C7.04034 1.80484 7.02767 1.14015 7.41812 0.722139C7.80857 0.304129 8.45428 0.291096 8.86034 0.693029L13.6203 5.24303C13.8203 5.44099 13.9334 5.71428 13.9334 5.9999C13.9334 6.28552 13.8203 6.55881 13.6203 6.75678L8.86034 11.3068C8.45428 11.7087 7.80857 11.6957 7.41812 11.2777C7.02767 10.8597 7.04034 10.195 7.4464 9.79303L10.3809 7.0499H1.35337C0.790044 7.0499 0.333374 6.5798 0.333374 5.9999Z"
+                                            fill="white"
+                                        />
+                                    </svg>
+                                </i>
+                            </span>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </section>
