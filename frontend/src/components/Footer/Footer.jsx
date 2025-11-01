@@ -25,18 +25,18 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="section-2 flex justify-between items-center w-full py-6">
+            <div className="section-2 flex justify-center items-center w-full py-6">
                 <div className="copy-rights flex justify-start items-center">
                     <p>@2025 COZECH. All Rights Reserved.</p>
                 </div>
                 {/* <div className="version">
                     <p>Version 1.0</p>
                 </div> */}
-                <div className="navigations flex justify-between gap-5 items-center">
+                {/* <div className="navigations flex justify-between gap-5 items-center">
                     <a href="">Privacy Policy</a>
                     <a href="">Terms & Conditions</a>
                     <a href="">Cookie Policyy</a>
-                </div>
+                </div> */}
             </div>
         </div>
     </footer>
