@@ -53,7 +53,8 @@ const Projects = () => {
 
         const initialBg =
             getComputedStyle(document.documentElement).getPropertyValue("--primary-color").trim() || "#0F0F0F";
-        const projectsBg = "#1A1F2E";
+        // const projectsBg = "#1A1F2E";
+        const projectsBg = "#192023";
 
         const setBg = (color) => {
             if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {

@@ -24,7 +24,7 @@ export default function PricingPolicy() {
     return (
         <>
             <Navbar2 />
-            <section className="pricing-policy min-h-screen flex items-start justify-center p-8 pt-14 sm:pt-24 lg:pt-40">
+            <section className="pricing-policy min-h-screen flex items-start justify-center p-4 md:p-8 pt-14 sm:pt-24 lg:pt-40">
                 <div className="max-w-4xl w-full">
                     <header className="mb-8">
                         <h1 className="text-3xl md:text-4xl font-semibold heading">Pricing Policy</h1>
