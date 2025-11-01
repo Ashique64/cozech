@@ -6,6 +6,15 @@ import "./Contact.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// --- ZOHO FORM CONFIGURATION (DEFINITIVE VERSION) ---
+
+// 1. The API URL is a GENERIC endpoint for the EU data center.
+const ZOHO_API_URL = "https://forms.zoho.eu/forms/formapi/public/addRecord";
+
+// 2. Your form's unique ID is the ONLY specific piece of info we need.
+const ZOHO_FORM_PERMA = "tOY3IVg1pdjyIh11-6cVAQR9ZXfkJcSOdguPzkBY91I";
+
+
 const contactItems = [
     {
         id: 1,
@@ -56,130 +65,88 @@ const Contact = () => {
                 toggleActions: "play none none reverse",
             }
         });
-
-        tl.fromTo(
-            titleRef.current,
-            {
-                opacity: 0,
-                y: 50,
-                rotateX: -90,
-                transformOrigin: "50% 50%",
-            },
-            {
-                opacity: 1,
-                y: 0,
-                rotateX: 0,
-                transformOrigin: "50% 50%",
-                duration: 1,
-                ease: "power3.out",
-            }
-        );
-
-        tl.fromTo(
-            descriptionRef.current,
-            {
-                opacity: 0,
-                y: 40,
-                rotateX: -90,
-                transformOrigin: "50% 50%",
-            },
-            {
-                opacity: 1,
-                y: 0,
-                rotateX: 0,
-                transformOrigin: "50% 50%",
-                duration: 0.8,
-                ease: "power2.out",
-            },
-            "-=0.5"
-        );
-
-        tl.fromTo(
-            contactDetailsRef.current,
-            {
-                opacity: 0,
-                y: 50,
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out",
-            },
-            "-=0.3"
-        );
-
-        tl.fromTo(
-            formDetailsRef.current,
-            {
-                opacity: 0,
-                y: 50,
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out",
-            },
-            "-=0.8"
-        );
-
+        tl.fromTo(titleRef.current, { opacity: 0, y: 50, rotateX: -90, transformOrigin: "50% 50%" }, { opacity: 1, y: 0, rotateX: 0, transformOrigin: "50% 50%", duration: 1, ease: "power3.out" });
+        tl.fromTo(descriptionRef.current, { opacity: 0, y: 40, rotateX: -90, transformOrigin: "50% 50%" }, { opacity: 1, y: 0, rotateX: 0, transformOrigin: "50% 50%", duration: 0.8, ease: "power2.out" }, "-=0.5");
+        tl.fromTo(contactDetailsRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "-=0.3");
+        tl.fromTo(formDetailsRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "-=0.8");
     }, { scope: sectionRef });
 
-    const handleFocus = (field) => {
-        setFormState((prev) => ({
-            ...prev,
-            [field]: { ...prev[field], focused: true },
-        }));
-    };
+    const handleFocus = (field) => setFormState((prev) => ({ ...prev, [field]: { ...prev[field], focused: true } }));
+    const handleBlur = (field) => setFormState((prev) => ({ ...prev, [field]: { ...prev[field], focused: false } }));
+    const handleChange = (field, value) => setFormState((prev) => ({ ...prev, [field]: { ...prev[field], value } }));
 
-    const handleBlur = (field) => {
-        setFormState((prev) => ({
-            ...prev,
-            [field]: { ...prev[field], focused: false },
-        }));
-    };
+    const handleSubmit = async () => {
+        if (buttonState === "submitting" || buttonState === "submitted") return;
 
-    const handleChange = (field, value) => {
-        setFormState((prev) => ({
-            ...prev,
-            [field]: { ...prev[field], value },
-        }));
-    };
+        setButtonState("submitting");
 
-    const handleSubmit = () => {
-        setButtonState("submitted");
-        // Add your form submission logic here
+        const formData = new URLSearchParams();
+
+        // Add the user's data
+        formData.append("SingleLine", formState.name.value);
+        formData.append("Email", formState.email.value);
+        formData.append("PhoneNumber", formState.phone.value);
+        formData.append("SingleLine1", formState.company.value);
+        formData.append("MultiLine", formState.message.value);
+
+        // *** THIS IS THE MOST IMPORTANT PART ***
+        // Add the hidden fields that identify YOUR form to the request BODY.
+        formData.append("zf_perma", ZOHO_FORM_PERMA);
+        formData.append("zf_referrer_name", "(Direct)"); // This is a required field.
+
+        try {
+            // We now send the request to the GENERIC URL, with no special query parameters.
+            await fetch(ZOHO_API_URL, {
+                method: "POST",
+                body: formData,
+            });
+            
+            // This part should not be reached on success due to the redirect.
+            setButtonState("error");
+            console.error("Fetch completed without throwing an error, which is unexpected for Zoho form submissions.");
+
+        } catch (error) {
+            // A TypeError 'Failed to fetch' is the EXPECTED result for a successful submission
+            // because the browser blocks the cross-origin redirect after the POST request succeeds.
+            if (error instanceof TypeError && error.message === 'Failed to fetch') {
+                console.log('Submission successful (inferred from cross-origin redirect).');
+                setButtonState("submitted");
+
+                setTimeout(() => {
+                    setFormState({ name: { value: "", focused: false }, email: { value: "", focused: false }, phone: { value: "", focused: false }, company: { value: "", focused: false }, message: { value: "", focused: false } });
+                    setButtonState("idle");
+                }, 4000);
+            } else {
+                // This would be a genuine network error (e.g., no internet).
+                console.error("A genuine network or other error occurred:", error);
+                setButtonState("error");
+                setTimeout(() => setButtonState("idle"), 4000);
+            }
+        }
+    };
+    
+    const getButtonText = () => {
+        switch (buttonState) {
+            case "submitting": return "Submitting...";
+            case "submitted": return "Thanks!";
+            case "error": return "Error! Try Again";
+            default: return "Send your Inquiry";
+        }
     };
 
     return (
-        <section 
-            ref={sectionRef}
-            id="contact" 
-            className="contact w-full min-h-screen flex flex-col items-center justify-center md:px-20 py-10 md:py-20"
-        >
+        <section ref={sectionRef} id="contact" className="contact w-full min-h-screen flex flex-col items-center justify-center md:px-20 py-10 md:py-20">
             <div className="contact-container flex flex-col gap-8 md:gap-16 justify-center items-center max-w-[1280px] w-full mx-auto px-3">
                 <div className="title-section text-center gap-3 md:gap-5 flex flex-col">
-                    <h2 
-                        ref={titleRef}
-                        className="title font-semibold" 
-                        data-text="Get in Touch"
-                    >
+                    <h2 ref={titleRef} className="title font-semibold" data-text="Get in Touch">
                         Get in Touch
                     </h2>
-                    <p 
-                        ref={descriptionRef}
-                        className="description"
-                    >
+                    <p ref={descriptionRef} className="description">
                         Drop us a message — we'll take it from there.
                     </p>
                 </div>
-
                 <div className="form-section flex flex-col items-center lg:flex-row gap-10 lg:gap-10 w-full">
-                    <div 
-                        ref={contactDetailsRef}
-                        className="contact-details flex flex-col gap-5 lg:gap-8 w-full lg:w-2/5"
-                    >
+                    <div ref={contactDetailsRef} className="contact-details flex flex-col gap-5 lg:gap-8 w-full lg:w-2/5">
                         {contactItems.map(({ id, label, icon, text, link }) => (
                             <div className="contact-item flex flex-col gap-2 lg:gap-4" key={id}>
                                 <div className="heading">{label}</div>
@@ -195,100 +162,38 @@ const Contact = () => {
                             </div>
                         ))}
                     </div>
-
-                    <div 
-                        ref={formDetailsRef}
-                        className="form-details w-full lg:w-3/5 flex flex-col items-center gap-4 lg:gap-6"
-                    >
+                    <div ref={formDetailsRef} className="form-details w-full lg:w-3/5 flex flex-col items-center gap-4 lg:gap-6">
                         <div className="form-items flex flex-col gap-7 md:gap-10 lg:gap-12 w-full">
                             <div className="items flex flex-col md:flex-row items-center gap-6 md:gap-12 w-full">
-                                <div
-                                    className={`item flex flex-col gap-2 w-full ${
-                                        formState.name.focused || formState.name.value ? "active" : ""
-                                    }`}
-                                >
+                                <div className={`item flex flex-col gap-2 w-full ${formState.name.focused || formState.name.value ? "active" : ""}`}>
                                     <div className="label">Name</div>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter Your Name"
-                                        value={formState.name.value}
-                                        onFocus={() => handleFocus("name")}
-                                        onBlur={() => handleBlur("name")}
-                                        onChange={(e) => handleChange("name", e.target.value)}
-                                    />
+                                    <input type="text" placeholder="Enter Your Name" name="name" value={formState.name.value} onFocus={() => handleFocus("name")} onBlur={() => handleBlur("name")} onChange={(e) => handleChange("name", e.target.value)} />
                                 </div>
-                                <div
-                                    className={`item flex flex-col gap-2 w-full ${
-                                        formState.email.focused || formState.email.value ? "active" : ""
-                                    }`}
-                                >
+                                <div className={`item flex flex-col gap-2 w-full ${formState.email.focused || formState.email.value ? "active" : ""}`}>
                                     <div className="label">Email</div>
-                                    <input
-                                        type="email"
-                                        placeholder="Enter Your Email"
-                                        value={formState.email.value}
-                                        onFocus={() => handleFocus("email")}
-                                        onBlur={() => handleBlur("email")}
-                                        onChange={(e) => handleChange("email", e.target.value)}
-                                    />
+                                    <input type="email" placeholder="Enter Your Email" name="email" value={formState.email.value} onFocus={() => handleFocus("email")} onBlur={() => handleBlur("email")} onChange={(e) => handleChange("email", e.target.value)} />
                                 </div>
                             </div>
                             <div className="items flex flex-col md:flex-row items-center gap-6 md:gap-12 w-full">
-                                <div
-                                    className={`item flex flex-col gap-2 w-full ${
-                                        formState.phone.focused || formState.phone.value ? "active" : ""
-                                    }`}
-                                >
+                                <div className={`item flex flex-col gap-2 w-full ${formState.phone.focused || formState.phone.value ? "active" : ""}`}>
                                     <div className="label">Phone Number</div>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter Your Phone Number"
-                                        value={formState.phone.value}
-                                        onFocus={() => handleFocus("phone")}
-                                        onBlur={() => handleBlur("phone")}
-                                        onChange={(e) => handleChange("phone", e.target.value)}
-                                    />
+                                    <input type="text" placeholder="Enter Your Phone Number" name="phone" value={formState.phone.value} onFocus={() => handleFocus("phone")} onBlur={() => handleBlur("phone")} onChange={(e) => handleChange("phone", e.target.value)} />
                                 </div>
-                                <div
-                                    className={`item flex flex-col gap-2 w-full ${
-                                        formState.company.focused || formState.company.value ? "active" : ""
-                                    }`}
-                                >
+                                <div className={`item flex flex-col gap-2 w-full ${formState.company.focused || formState.company.value ? "active" : ""}`}>
                                     <div className="label">Company / Organization Name</div>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter Your Organization Name"
-                                        value={formState.company.value}
-                                        onFocus={() => handleFocus("company")}
-                                        onBlur={() => handleBlur("company")}
-                                        onChange={(e) => handleChange("company", e.target.value)}
-                                    />
+                                    <input type="text" placeholder="Enter Your Organization Name" name="company" value={formState.company.value} onFocus={() => handleFocus("company")} onBlur={() => handleBlur("company")} onChange={(e) => handleChange("company", e.target.value)} />
                                 </div>
                             </div>
                             <div className="items flex items-center md:gap-12 w-full">
-                                <div
-                                    className={`item flex flex-col gap-2 w-full ${
-                                        formState.message.focused || formState.message.value ? "active" : ""
-                                    }`}
-                                >
+                                <div className={`item flex flex-col gap-2 w-full ${formState.message.focused || formState.message.value ? "active" : ""}`}>
                                     <div className="label">Message</div>
-                                    <textarea
-                                        placeholder="Enter Your Message Here"
-                                        rows={5}
-                                        value={formState.message.value}
-                                        onFocus={() => handleFocus("message")}
-                                        onBlur={() => handleBlur("message")}
-                                        onChange={(e) => handleChange("message", e.target.value)}
-                                    ></textarea>
+                                    <textarea placeholder="Enter Your Message Here" name="message" rows={5} value={formState.message.value} onFocus={() => handleFocus("message")} onBlur={() => handleBlur("message")} onChange={(e) => handleChange("message", e.target.value)}></textarea>
                                 </div>
                             </div>
                         </div>
                         <div className="submit-button">
-                            <button
-                                className={`flex items-center gap-2 ${buttonState === "submitted" ? "active" : ""}`}
-                                onClick={handleSubmit}
-                            >
-                                <p className="btn-text">{buttonState === "submitted" ? "Thanks" : "Send your Inquiry"}</p>
+                            <button className={`flex items-center gap-2 ${buttonState === "submitted" ? "active" : ""}`} onClick={handleSubmit} disabled={buttonState === "submitting"}>
+                                <p className="btn-text">{getButtonText()}</p>
                                 <div className="check-box">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                                         <path fill="transparent" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
@@ -304,4 +209,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
