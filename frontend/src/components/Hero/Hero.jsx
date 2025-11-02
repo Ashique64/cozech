@@ -8,7 +8,7 @@ import "./Hero.scss";
 gsap.registerPlugin(SplitText);
 
 const Hero = () => {
-    const rotatingWords = ["Solutions", "Websites", "Apps", "Designs", "Brands"];
+    const rotatingWords = ["Websites", "Apps", "Designs", "Brands"];
 
     const rotatingRef = useRef(null);
     const containerRef = useRef(null);

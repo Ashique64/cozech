@@ -18,15 +18,15 @@ const contactItems = [
     id: 2,
     label: "Phone",
     icon: "/images/socialMedia/svg/Phone.svg",
-    text: "+91 234 567 8901",
-    link: "tel:+912345678901",
+    text: "+91 8593978298",
+    link: "tel:+918593978298",
   },
   {
     id: 3,
     label: "Location",
     icon: "/images/socialMedia/svg/Location.svg",
-    text: "123 Cozech St, Kerala, India",
-    link: "https://www.google.com/maps?q=123+Cozech+St,+Kerala,+India",
+    text: "Kozhikode, Kerala, India",
+    link: "https://www.google.com/maps?q=Kozhikode,+Kerala,+India",
   },
 ];
 
