@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Loader from "./components/Loader/Loader";
