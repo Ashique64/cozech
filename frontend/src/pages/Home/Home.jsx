@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import WhatsAppButton from "../../components/WhatsAppButton/WhatsAppButton";
+import BotpressChatbot from "../../components/BotpressChatbot/BotpressChatbot";
 
 const Hero = React.lazy(() => import("../../components/Hero/Hero"));
 const Process = React.lazy(() => import("../../components/Process/Process"));
@@ -39,6 +40,7 @@ export default function Home() {
             <Contact />
             <Footer />
             <WhatsAppButton />
+            <BotpressChatbot />
         </>
     );
 }
