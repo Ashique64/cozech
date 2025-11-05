@@ -2,10 +2,12 @@ import React, { Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import Hero from "../../components/Hero/Hero";
 import WhatsAppButton from "../../components/WhatsAppButton/WhatsAppButton";
 import BotpressChatbot from "../../components/BotpressChatbot/BotpressChatbot";
+import {useDocumentMeta} from "../../hooks/useDocumentMeta";
 
-const Hero = React.lazy(() => import("../../components/Hero/Hero"));
+
 const Process = React.lazy(() => import("../../components/Process/Process"));
 const Services = React.lazy(() => import("../../components/Services/Services"));
 const Projects = React.lazy(() => import("../../components/Projects/Projects"));
@@ -16,6 +18,17 @@ const Footer = React.lazy(() => import("../../components/Footer/Footer"));
 
 export default function Home() {
     const location = useLocation();
+
+    useDocumentMeta({
+        title: "COZECH - Professional Web & Mobile App Development",
+        description:
+            "Transform your digital presence with COZECH. Professional web and mobile app development, modern UI/UX design, and scalable full-stack solutions for your business.",
+        keywords: "web development, mobile app development, UI/UX design, full-stack development, COZECH",
+        ogTitle: "COZECH - Professional Web & Mobile App Development",
+        ogDescription: "Transform your digital presence with COZECH. Professional web and mobile app development.",
+        ogImage: "	https://www.cozech.com/images/socialMedia/svg/Logo-2.svg",
+        canonical: "https://cozech.com/",
+    });
 
     useEffect(() => {
         if (location.hash) {
@@ -31,7 +44,7 @@ export default function Home() {
     return (
         <>
             <Navbar />
-            <Hero />
+            <Hero/>
             <Process />
             <Services />
             <Projects />

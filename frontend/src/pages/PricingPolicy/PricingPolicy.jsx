@@ -1,7 +1,8 @@
 import React from "react";
-import "./PricingPolicy.scss";
 import Footer from "../../components/Footer/Footer";
 import Navbar2 from "../../components/Navbar2";
+import { useDocumentMeta } from "../../hooks/useDocumentMeta";
+import "./PricingPolicy.scss";
 
 const webMilestones = [
     { id: 1, title: "Project Setup & Discovery", percent: "20%", trigger: "Advance (contract signing)" },
@@ -21,6 +22,13 @@ const mobileMilestones = [
 ];
 
 export default function PricingPolicy() {
+    useDocumentMeta({
+        title: "Pricing Policy - COZECH",
+        description:
+            "Learn about COZECH's transparent pricing policy for web development, mobile apps, and design services.",
+        keywords: "pricing, web development cost, mobile app pricing, COZECH pricing",
+        canonical: "https://cozech.com/pricing-policy",
+    });
     return (
         <>
             <Navbar2 />

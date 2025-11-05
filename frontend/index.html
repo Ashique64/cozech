@@ -3,18 +3,101 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>COZECH - Professional Web & Mobile App Development</title>
+        <meta name="title" content="COZECH - Professional Web & Mobile App Development" />
         <meta
             name="description"
             content="Transform your digital presence with COZECH. Professional web and mobile app development, modern UI/UX design, and scalable full-stack solutions for your business."
         />
+        <meta
+            name="keywords"
+            content="web development, mobile app development, UI/UX design, full-stack development, branding, custom software, CRM software"
+        />
+        <meta name="author" content="COZECH" />
+        <meta name="robots" content="index, follow" />
 
-        <link rel="icon" type="image/x-icon" href="/images/socialMedia/svg/Logo-2.svg" />
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://cozech.com/" />
+        <meta property="og:site_name" content="COZECH" />
+        <meta property="og:title" content="COZECH - Professional Web & Mobile App Development" />
+        <meta
+            property="og:description"
+            content="Transform your digital presence with COZECH. Professional web and mobile app development."
+        />
+        <meta property="og:image" content="	https://www.cozech.com/images/socialMedia/svg/Logo-2.svg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://cozech.com/" />
+        <meta property="twitter:title" content="COZECH - Professional Web & Mobile App Development" />
+        <meta property="twitter:description" content="Transform your digital presence with COZECH." />
+        <meta property="twitter:image" content="https://cozech.com/images/socialMedia/svg/Logo-2.svg" />
+
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://yourdomain.com/" />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="/images/socialMedia/svg/Logo-2.svg" />
+        <link rel="apple-touch-icon" href="/images/socialMedia/svg/Logo-2.svg" />
+
         <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet" />
-        <title>COZECH</title>
+
+        <!-- Structured Data - Organization -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "COZECH",
+                "url": "https://cozech.com",
+                "logo": "https://cozech.com/images/socialMedia/svg/Logo-2.svg",
+                "description": "Professional web and mobile app development company specializing in modern UI/UX design and scalable full-stack solutions",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Kozhikode",
+                    "addressRegion": "India",
+                    "addressCountry": "IN"
+                },
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+91-8593978298",
+                    "contactType": "Customer Service",
+                    "availableLanguage": ["en", "hi"]
+                },
+                "sameAs": [
+                    "https://facebook.com/yourpage",
+                    "https://twitter.com/yourpage",
+                    "https://www.linkedin.com/company/cozech/",
+                    "https://www.instagram.com/team.cozech?igsh=bHM2dmpncXB1MG5z"
+                ]
+            }
+        </script>
+
+        <!-- Structured Data - Website -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "COZECH",
+                "url": "https://cozech.com",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://cozech.com/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        </script>
     </head>
     <body>
+        <noscript>
+            <div style="padding: 20px; text-align: center; font-family: Arial, sans-serif">
+                <h1>COZECH - Web & Mobile App Development</h1>
+                <p>JavaScript is required to view this website. Please enable JavaScript in your browser settings.</p>
+            </div>
+        </noscript>
         <div id="root"></div>
         <script type="module" src="/src/main.jsx"></script>
-        
     </body>
 </html>
