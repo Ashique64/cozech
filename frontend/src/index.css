@@ -22,7 +22,6 @@ html {
     --button-color-2: #1a1a1a;
     --card-bg: #1a1a1a;
     --gradient-accent: linear-gradient(90deg, #ffd500 0%, #ff6b00 100%);
-    /* --gradient-accent-2: linear-gradient(90deg, #ffd500bc 0%, #ff6a00b9 100%); */
     --gradient-accent-2: linear-gradient(90deg, #ffd50044 0%, #ff6a003e 100%);
 }
 
