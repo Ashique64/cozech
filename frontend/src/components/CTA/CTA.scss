@@ -185,7 +185,6 @@
                 width: 430px;
                 z-index: 2;
                 opacity: 0.9;
-                animation: spin 10s linear infinite;
                 transform-origin: center center;
             }
 
@@ -214,15 +213,6 @@
                 }
             }
         }
-    }
-}
-
-@keyframes spin {
-    0% {
-        transform: translateX(-50%) rotate(0deg);
-    }
-    100% {
-        transform: translateX(-50%) rotate(360deg);
     }
 }
 
