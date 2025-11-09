@@ -77,23 +77,6 @@ const CTA = () => {
             },
             "-=0.3"
         );
-
-        tl.fromTo(
-            bottomImageRef.current,
-            {
-                opacity: 0,
-                y: 40,
-                scale: 0.95,
-            },
-            {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                duration: 1,
-                ease: "power2.out",
-            },
-            "-=0.4"
-        );
     });
 
     const scrollToContact = () => {
@@ -153,12 +136,9 @@ const CTA = () => {
                     </div>
                 </div>
                 <div className="image-section w-full">
-                    <img
-                        src="/images/CTA/cta-image.webp"
-                        alt="Decorative"
-                        ref={bottomImageRef}
-                        className="cta-bottom-image"
-                    />
+                    <div className="cta-image-wrapper">
+                        <img src="/images/CTA/cta-image.webp" alt="Decorative" className="cta-bottom-image" />
+                    </div>
                     <div className="bars flex"></div>
                 </div>
             </div>
